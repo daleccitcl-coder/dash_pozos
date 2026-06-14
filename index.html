@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)file:///C:/Users/dalecci/Downloads/EDIFICIOS_DE_POZO_Dashboard_sin_conclusion_foco.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDIFICIOS DE POZO · Dashboard TV 40/43 · Público GitHub final</title>
+<style>
+:root{--bg:#06111f;--panel:#0b2038;--text:#f7fbff;--muted:#a8bdd8;--blue:#2f80ff;--cyan:#26d6c5;--green:#5dd85d;--orange:#ff9d2e;--violet:#a78bfa;--red:#ff2b36;--yellow:#ffd400;--radius:15px;}
+*{box-sizing:border-box} html,body{margin:0;width:100%;height:100%;overflow:hidden;background:radial-gradient(circle at 10% 0%,#112b4a 0,#06111f 45%,#020713 100%);color:var(--text);font-family:Arial,Helvetica,sans-serif;}
+.app{width:100vw;height:100vh;padding:7px 12px 6px;display:grid;grid-template-rows:78px minmax(0,1fr) 30px 3px;gap:6px;}
+.header{display:grid;grid-template-columns:1.2fr repeat(6,.82fr);gap:8px;min-height:0;}
+.brand,.kpi,.clock,.card,.controlbar{background:linear-gradient(180deg,rgba(13,38,67,.96),rgba(5,18,33,.98));border:1px solid rgba(55,146,255,.32);border-radius:var(--radius);box-shadow:0 8px 22px rgba(0,0,0,.26);}
+.brand{padding:7px 11px;display:flex;flex-direction:column;justify-content:center;text-align:left;}
+.brand h1{font-size:21px;line-height:.88;margin:0;font-weight:950;letter-spacing:.2px;}
+.brand .sub{margin-top:5px;color:#62c8ff;font-size:10.5px;font-weight:900;line-height:1.1;}
+.kpi{padding:5px 7px;text-align:center;display:flex;flex-direction:column;justify-content:center;}
+.kpi span{font-size:9.5px;color:#d7e8ff;font-weight:950;text-transform:uppercase;line-height:1.0}
+.kpi b{font-size:25px;line-height:.95;margin-top:4px;font-weight:950}
+.kpi small{font-size:9px;color:var(--muted);font-weight:800;margin-top:2px}
+.clock{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.clock b{font-size:25px;line-height:.9;font-weight:950}
+.clock span{color:#67c9ff;font-size:10px;font-weight:900;margin-top:4px;line-height:1.1}
+.stage{position:relative;min-height:0;overflow:hidden}
+.slide{position:absolute;inset:0;display:none;gap:10px;}
+.slide.active{display:grid} .grid1{grid-template-columns:1fr} .grid2{grid-template-columns:1fr 1fr} .grid3{grid-template-columns:1.05fr .95fr}
+.card{padding:10px 14px;overflow:hidden;position:relative;}
+.card h2{font-size:20px;text-align:center;margin:0 0 4px;font-weight:950;text-shadow:0 2px 8px #000;line-height:1}
+.kpiRow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:5px 0 9px}
+.bigMetric{border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:9px 10px;background:rgba(0,0,0,.20);text-align:center}
+.bigMetric span{font-size:12px;color:#dcecff;font-weight:950;text-transform:uppercase}
+.bigMetric b{display:block;font-size:38px;line-height:1;font-weight:950;margin-top:3px}
+.bigMetric small{font-size:13px;font-weight:900;color:var(--muted)}
+.statusGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.statusBox{padding:10px 12px;border-radius:14px;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.14)}
+.statusBox h3{font-size:16px;margin:0 0 6px;font-weight:950}
+.statusLine{display:flex;justify-content:space-between;align-items:center;font-size:16px;font-weight:950;margin:6px 0;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:5px}
+.good{color:#69e36a}.warn{color:#ffd400}.bad{color:#ff5b62}.blue{color:var(--blue)}.cyan{color:var(--cyan)}.green{color:var(--green)}.orange{color:var(--orange)}.violet{color:var(--violet)}
+.chartHeader{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:5px}
+.chartMini{background:rgba(0,0,0,.20);border:1px solid rgba(255,255,255,.12);border-radius:12px;text-align:center;padding:6px}
+.chartMini span{display:block;font-size:11px;color:#cfe4ff;font-weight:950;text-transform:uppercase}
+.chartMini b{display:block;font-size:23px;margin-top:2px;font-weight:950}
+.chartBox{height:calc(100% - 92px);min-height:0}
+svg{width:100%;height:100%;display:block} .axisText{fill:#fff;font-size:18px;font-weight:900;paint-order:stroke;stroke:#06111f;stroke-width:3px} .valText{fill:#fff;font-size:19px;font-weight:950;paint-order:stroke;stroke:#06111f;stroke-width:4px} .objText{fill:#ffd6d6;font-size:14px;font-weight:950;paint-order:stroke;stroke:#06111f;stroke-width:3px} .avgText{fill:#fff0a5;font-size:14px;font-weight:950;paint-order:stroke;stroke:#06111f;stroke-width:3px} .gridLine{stroke:rgba(255,255,255,.12);stroke-width:1} .axisLine{stroke:rgba(255,255,255,.55);stroke-width:1.5} .objLine{stroke:var(--red);stroke-width:3;stroke-dasharray:14 8} .expLine{stroke:var(--yellow);stroke-width:2.5;stroke-dasharray:12 7} .lineGraph{fill:none;stroke:var(--red);stroke-width:5;stroke-linecap:round;stroke-linejoin:round} .point{fill:var(--red);stroke:#ffb3b3;stroke-width:2}
+.table{width:100%;border-collapse:collapse;font-size:15px} .table th{background:rgba(96,165,250,.14);color:#dcecff;text-transform:uppercase;font-size:12px;padding:7px;border-bottom:1px solid rgba(255,255,255,.15)} .table td{padding:7px;border-bottom:1px solid rgba(255,255,255,.10);font-weight:850;text-align:center} .table td:nth-child(3),.table th:nth-child(3){text-align:left} .excludedRow{opacity:.48;background:rgba(255,91,98,.06)} .excludeBadge{display:inline-block;border:1px solid rgba(255,91,98,.55);border-radius:999px;padding:2px 7px;color:#ffccd0;font-size:11px;font-weight:950;margin-left:6px}
+.conclusion{font-size:17px;line-height:1.18;font-weight:850} .conclusion strong{font-size:18px} .actionBox{margin-top:8px;padding:9px 12px;border-radius:14px;border:1px solid rgba(255,212,0,.45);background:rgba(255,212,0,.10);font-size:17px;font-weight:950;color:#fff4b0}
+.analysisNote{margin-top:8px;color:#a8bdd8;font-size:12px;font-weight:800;line-height:1.2} .gestorSelector{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-top:8px} .gestorChip{display:flex;align-items:center;justify-content:space-between;gap:6px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.20);border-radius:10px;padding:5px 7px;font-size:11px;font-weight:900;color:#eaf4ff} .gestorChip.off{opacity:.55;border-color:rgba(255,91,98,.42);background:rgba(255,91,98,.10)} .gestorChip button,.rankToggle{border:1px solid rgba(96,165,250,.38);background:rgba(47,128,255,.22);color:#fff;border-radius:7px;padding:3px 6px;font-size:10px;font-weight:950;cursor:pointer} .gestorChip.off button,.rankToggle.off{border-color:rgba(255,91,98,.65);background:rgba(255,91,98,.22);color:#ffccd0}
+.controlbar{display:flex;justify-content:center;align-items:center;gap:9px;padding:3px 8px;opacity:.28;transition:.25s;height:30px} .controlbar:hover{opacity:.9} .ctrl{width:30px;height:24px;border-radius:7px;border:1px solid rgba(96,165,250,.34);background:rgba(8,27,48,.55);color:rgba(255,255,255,.78);font-size:14px;font-weight:950;cursor:pointer;display:flex;align-items:center;justify-content:center} .ctrl:hover{background:rgba(47,128,255,.35);color:#fff} .progress{height:3px;background:rgba(255,255,255,.14);border-radius:999px;overflow:hidden;align-self:end} .progress span{display:block;height:100%;width:0;background:var(--red);transition:width .2s linear} .uploadMsg{position:fixed;right:18px;bottom:52px;z-index:2000;background:rgba(3,17,30,.92);border:1px solid rgba(255,212,0,.55);color:#ffd400;border-radius:14px;padding:10px 14px;font-size:13px;font-weight:900;opacity:0;transition:.25s;pointer-events:none} .uploadMsg.show{opacity:1}
+@media(max-height:850px){.app{grid-template-rows:70px minmax(0,1fr) 28px 3px;padding:5px 10px;gap:5px}.brand h1{font-size:19px}.kpi b{font-size:23px}.clock b{font-size:23px}.card{padding:8px 12px}.card h2{font-size:18px}.chartBox{height:calc(100% - 82px)}.axisText{font-size:16px}.valText{font-size:17px}}
+
+
+/* === LOOK & FEEL COPIADO DEL DASHBOARD(13) · ADAPTADO A TV 40/43 === */
+:root{--bg:#07111f!important;--card:#10243d!important;--text:#f8fbff!important;--muted:#9fb2cc!important;--red:#ff2b2b!important;--yellow:#ffd400!important;--grid:rgba(255,255,255,.12)!important;}
+html,body{background:radial-gradient(circle at top left,#17375d 0,#07111f 42%,#020713 100%)!important;color:var(--text)!important;}
+.app{height:100vh!important;width:100vw!important;padding:10px 20px 10px!important;display:block!important;overflow:hidden!important;}
+.cabeceraTv43{width:100%;height:190px!important;display:grid!important;grid-template-columns:260px 1fr!important;gap:12px!important;margin-bottom:8px!important;}
+.cabeceraTv43 .brand{height:190px!important;min-height:190px!important;border-radius:22px!important;padding:12px 16px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.05))!important;border:1px solid rgba(255,255,255,.18)!important;box-shadow:0 16px 40px rgba(0,0,0,.42)!important;}
+.cabeceraTv43 .brand h1.tituloDash{width:100%!important;text-align:center!important;font-size:31px!important;line-height:.90!important;margin:0 0 12px!important;color:#72D572!important;font-weight:950!important;letter-spacing:.3px!important;text-transform:uppercase!important;text-shadow:0 0 5px rgba(114,213,114,.25)!important;}
+.cabeceraTv43 .brand .sub.fechaInfo{width:100%!important;text-align:center!important;color:#fff!important;font-size:13px!important;line-height:1.05!important;margin:0 0 12px!important;font-weight:900!important;text-transform:uppercase!important;}
+.cabeceraTv43 .brand .sub.fechaInfo span{display:inline-block!important;color:#72D572!important;font-size:16px!important;margin-top:3px!important;font-weight:950!important;}
+.cabeceraTv43 .brand .live{align-self:center!important;margin:0!important;padding:4px 10px!important;font-size:12px!important;font-weight:950!important;color:#72D572!important;background:rgba(114,213,114,.12)!important;border-radius:999px!important;letter-spacing:.8px!important;}
+.cabeceraDerecha{display:grid!important;grid-template-rows:78px 1fr!important;gap:8px!important;min-width:0!important;}
+.topMetricsTv43{display:grid!important;grid-template-columns:1fr 260px!important;gap:12px!important;height:78px!important;}
+.topMetricsTv43 .kpi{height:78px!important;display:grid!important;grid-template-columns:repeat(5,1fr)!important;gap:8px!important;padding:0!important;background:transparent!important;border:none!important;box-shadow:none!important;border-radius:0!important;}
+.topMetricsTv43 .kpiBox{height:78px!important;min-height:78px!important;border-radius:12px!important;padding:8px 10px!important;background:rgba(0,0,0,.25)!important;border:1px solid rgba(255,255,255,.16)!important;box-shadow:0 10px 22px rgba(0,0,0,.25)!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;}
+.topMetricsTv43 .kpiBox span{display:block!important;width:100%!important;text-align:center!important;font-size:12px!important;color:#bcd5ff!important;line-height:1!important;font-weight:950!important;text-transform:uppercase!important;margin:0 0 7px!important;white-space:nowrap!important;}
+.topMetricsTv43 .kpiBox b{display:block!important;width:100%!important;text-align:center!important;font-size:32px!important;line-height:.95!important;color:#fff!important;margin:0!important;font-weight:950!important;}
+.topMetricsTv43 .kpiBox small{font-size:10px!important;color:#bcd5ff!important;font-weight:800!important;margin-top:5px!important;}
+.topMetricsTv43 .clock{height:78px!important;min-height:78px!important;border-radius:16px!important;padding:8px 14px!important;text-align:center!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.05))!important;border:1px solid rgba(255,255,255,.18)!important;box-shadow:0 16px 40px rgba(0,0,0,.42)!important;}
+.topMetricsTv43 .clock b{font-size:39px!important;line-height:.9!important;color:#fff!important;font-weight:950!important;}
+.topMetricsTv43 .clock span{font-size:12px!important;line-height:1.05!important;margin-top:5px!important;color:#bcd5ff!important;font-weight:900!important;}
+.objetivosPanelEditable{margin:0!important;padding:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;height:104px!important;display:grid!important;grid-template-rows:1fr 1fr!important;gap:8px!important;}
+.objetivosGridEditable,.objetivosGridEditable.primera,.objetivosGridEditable.segunda{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:8px!important;margin:0!important;}
+.objetivoCajaEditable{height:48px!important;min-height:48px!important;border:2px solid #ffd400!important;border-radius:9px!important;background:#03111e!important;padding:3px 8px 4px!important;display:grid!important;grid-template-rows:auto 1fr!important;align-items:center!important;justify-items:center!important;text-align:center!important;overflow:hidden!important;}
+.objetivoTituloEditable{width:100%!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;margin:0!important;padding:0!important;color:#ffd400!important;font-size:10px!important;line-height:.95!important;font-weight:950!important;text-transform:uppercase!important;}
+.objetivoValorEditable{width:100%!important;height:100%!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;margin:0!important;padding:0!important;line-height:1!important;color:#ffd400!important;font-size:27px!important;font-weight:950!important;}
+.stage{height:calc(100vh - 208px)!important;min-height:0!important;position:relative!important;overflow:hidden!important;}
+.slide{position:absolute!important;inset:0!important;display:none!important;gap:16px!important;}
+.slide.active{display:grid!important;}
+.card{background:linear-gradient(180deg,rgba(16,36,61,.98),rgba(8,19,35,.98))!important;border:1px solid rgba(255,255,255,.16)!important;border-radius:28px!important;box-shadow:0 22px 58px rgba(0,0,0,.36)!important;padding:16px 20px!important;overflow:hidden!important;}
+.card h2{font-size:24px!important;margin:0 0 8px!important;font-weight:950!important;line-height:1.05!important;text-align:left!important;text-shadow:none!important;color:#fff!important;}
+.bigMetric,.statusBox,.chartMini{background:rgba(0,0,0,.22)!important;border:1px solid rgba(255,255,255,.12)!important;border-radius:18px!important;box-shadow:none!important;}
+.chartHeader{gap:10px!important;margin-bottom:8px!important;}
+.chartMini span{color:#dce8f8!important;font-size:12px!important;font-weight:950!important;}
+.chartMini b{font-size:27px!important;line-height:1.05!important;}
+.gridLine{stroke:rgba(255,255,255,.12)!important;stroke-width:1!important;}.axisLine{stroke:rgba(255,255,255,.22)!important;stroke-width:1.5!important;}.objLine{stroke:#ff2b2b!important;stroke-width:3.2!important;stroke-dasharray:12 8!important;stroke-linecap:round!important;}.expLine{stroke:#ffd400!important;stroke-width:1.8!important;stroke-dasharray:14 8!important;stroke-linecap:round!important;}.lineGraph{stroke:#ff2b2b!important;stroke-width:4!important;}.point{fill:#ff2b2b!important;stroke:#ffb3b3!important;stroke-width:2!important;}.axisText{fill:#e6f0ff!important;font-size:18px!important;font-weight:900!important;paint-order:stroke!important;stroke:#07111f!important;stroke-width:3px!important;}.valText{fill:#fff!important;font-size:21px!important;font-weight:950!important;paint-order:stroke!important;stroke:#07111f!important;stroke-width:4px!important;}.objText{fill:#ffd1d1!important;font-size:16px!important;font-weight:950!important;paint-order:stroke!important;stroke:#07111f!important;stroke-width:3px!important;}.avgText{fill:#fff3a0!important;font-size:16px!important;font-weight:950!important;paint-order:stroke!important;stroke:#07111f!important;stroke-width:3px!important;}
+.controlbar{position:fixed!important;left:50%!important;bottom:8px!important;transform:translateX(-50%) scale(.82)!important;z-index:200!important;display:flex!important;gap:10px!important;width:auto!important;height:auto!important;background:transparent!important;border:none!important;box-shadow:none!important;opacity:.28!important;}.controlbar:hover{opacity:1!important;}.ctrl{border:1px solid rgba(255,255,255,.22)!important;background:rgba(255,255,255,.10)!important;color:#fff!important;border-radius:999px!important;width:auto!important;height:auto!important;padding:7px 12px!important;font-size:13px!important;font-weight:900!important;backdrop-filter:blur(12px)!important;}.progress{position:fixed!important;left:28px!important;right:28px!important;bottom:2px!important;height:3px!important;background:rgba(255,255,255,.12)!important;border-radius:999px!important;overflow:hidden!important;z-index:150!important;}.progress span{display:block!important;height:100%!important;background:#ff2b2b!important;width:0%;}
+@media(max-height:900px){.app{padding:8px 16px 8px!important}.cabeceraTv43{height:170px!important;grid-template-columns:230px 1fr!important;margin-bottom:6px!important;gap:10px!important}.cabeceraTv43 .brand{height:170px!important;min-height:170px!important;padding:13px 15px!important}.cabeceraTv43 .brand h1.tituloDash{font-size:27px!important;margin-bottom:10px!important}.cabeceraTv43 .brand .sub.fechaInfo{font-size:11px!important;margin-bottom:9px!important}.cabeceraTv43 .brand .sub.fechaInfo span{font-size:14px!important}.cabeceraTv43 .brand .live{font-size:10px!important;padding:3px 9px!important}.cabeceraDerecha{grid-template-rows:68px 1fr!important;gap:7px!important}.topMetricsTv43{height:68px!important;grid-template-columns:1fr 260px!important;gap:10px!important}.topMetricsTv43 .kpiBox{height:68px!important;min-height:68px!important;padding:7px 10px!important}.topMetricsTv43 .kpiBox span{font-size:10px!important;margin-bottom:5px!important}.topMetricsTv43 .kpiBox b{font-size:28px!important}.topMetricsTv43 .clock{height:68px!important;min-height:68px!important}.topMetricsTv43 .clock b{font-size:33px!important}.topMetricsTv43 .clock span{font-size:10px!important}.objetivosPanelEditable{height:95px!important;gap:7px!important}.objetivosGridEditable{gap:7px!important}.objetivoCajaEditable{height:44px!important;min-height:44px!important;border-radius:8px!important}.objetivoTituloEditable{font-size:9px!important}.objetivoValorEditable{font-size:24px!important}.stage{height:calc(100vh - 184px)!important}.card{padding:12px 16px!important;border-radius:24px!important}.card h2{font-size:20px!important}.chartBox{height:calc(100% - 88px)!important}}
+/* === FIN LOOK & FEEL COPIADO === */
+
+
+
+/* === IMPORTAR IMAGEN AVANCES === */
+.imageImportPanel{position:fixed;inset:18px;z-index:5000;background:rgba(3,17,30,.97);border:1px solid rgba(255,212,0,.65);border-radius:22px;box-shadow:0 22px 70px rgba(0,0,0,.65);padding:18px;display:none;color:#fff;overflow:auto;}
+.imageImportPanel.show{display:block;}
+.imageImportPanel h2{margin:0 0 8px;font-size:24px;color:#ffd400;font-weight:950;}
+.imageImportGrid{display:grid;grid-template-columns:1fr 1.15fr;gap:16px;align-items:start;}
+.imagePreviewBox{min-height:360px;border:1px dashed rgba(255,255,255,.25);border-radius:16px;background:rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.imagePreviewBox img{max-width:100%;max-height:70vh;display:block;}
+.imageTable{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px;}
+.imageTable th{background:rgba(255,212,0,.14);color:#ffd400;text-transform:uppercase;font-size:11px;padding:8px;border:1px solid rgba(255,255,255,.12);}
+.imageTable td{padding:6px;border:1px solid rgba(255,255,255,.12);font-weight:900;text-align:center;}
+.imageTable td:first-child{text-align:left;white-space:nowrap;}
+.imageTable input{width:70px;border:1px solid rgba(255,255,255,.25);background:#06111f;color:#fff;border-radius:8px;padding:6px;text-align:center;font-weight:950;}
+.imageImportActions{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;}
+.imageImportActions button,.imageImportActions label{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.10);color:#fff;border-radius:999px;padding:9px 14px;font-weight:950;cursor:pointer;}
+.imageImportActions .primary{background:rgba(255,212,0,.18);border-color:rgba(255,212,0,.8);color:#ffd400;}
+.imageImportNote{color:#bcd5ff;font-size:12px;font-weight:800;line-height:1.25;margin:8px 0 0;}
+@media(max-width:1100px){.imageImportGrid{grid-template-columns:1fr}.imageImportPanel{inset:8px;padding:12px}}
+/* === FIN IMPORTAR IMAGEN AVANCES === */
+
+
+
+
+
+/* === LECTURA GERENCIAL FINAL · KPI PERMISOS SOBRIO === */
+#readout{
+  display:none!important;
+}
+#generalState{
+  display:block!important;
+  margin-top:6px!important;
+  padding:0!important;
+  background:transparent!important;
+  border:none!important;
+  color:#fff!important;
+}
+.estadoCard{
+  width:100%!important;
+  min-height:230px!important;
+  background:rgba(0,0,0,.20)!important;
+  border:1px solid rgba(255,255,255,.14)!important;
+  border-radius:18px!important;
+  padding:18px 20px!important;
+  box-shadow:none!important;
+  overflow:hidden!important;
+}
+.estadoHeader{
+  color:#fff!important;
+  font-weight:950!important;
+  font-size:26px!important;
+  line-height:1.08!important;
+  margin:0 0 6px!important;
+  text-transform:uppercase!important;
+}
+.estadoCumplimiento{
+  color:#fff!important;
+  font-weight:900!important;
+  font-size:18px!important;
+  line-height:1.1!important;
+  margin:0 0 14px!important;
+}
+.estadoDatos{
+  color:#fff!important;
+  font-size:18px!important;
+  font-weight:850!important;
+  line-height:1.14!important;
+  margin:0 0 14px!important;
+}
+.estadoDatos div{
+  display:grid!important;
+  grid-template-columns:1fr auto!important;
+  gap:16px!important;
+  margin:3px 0!important;
+}
+.estadoDatos b{
+  color:#fff!important;
+  font-size:18px!important;
+  font-weight:950!important;
+}
+.estadoAccion{
+  border-top:1px solid rgba(255,255,255,.18)!important;
+  padding-top:11px!important;
+  color:#fff!important;
+  font-weight:950!important;
+  font-size:24px!important;
+  line-height:1.08!important;
+  letter-spacing:.1px!important;
+}
+@media(max-height:900px){
+  .estadoCard{min-height:205px!important;padding:14px 16px!important;}
+  .estadoHeader{font-size:22px!important;margin-bottom:5px!important;}
+  .estadoCumplimiento{font-size:16px!important;margin-bottom:10px!important;}
+  .estadoDatos{font-size:16px!important;line-height:1.1!important;margin-bottom:10px!important;}
+  .estadoDatos b{font-size:16px!important;}
+  .estadoAccion{font-size:21px!important;line-height:1.05!important;padding-top:9px!important;}
+}
+/* === FIN LECTURA GERENCIAL FINAL === */
+
+
+/* === COLOR DINÁMICO DEL % KPI PERMISOS === */
+.estadoPctRojo{color:#ff5b62!important;}
+.estadoPctAmarillo{color:#ffd400!important;}
+.estadoPctVerde{color:#69e36a!important;}
+/* === FIN COLOR DINÁMICO % === */
+
+
+/* Public GitHub: sin herramientas de administración */
+#gestorSelector{display:none!important;}
+.table th:first-child,.table td:first-child{display:none!important;}
+</style>
+</head>
+<body>
+<div class="app"><div class="cabeceraTv43">
+  <section class="brand">
+    <h1 class="tituloDash">EDIFICIOS<br>DE POZO<br>DASHBOARD</h1>
+    <div class="sub fechaInfo">INFORMACIÓN / AVANCE<br><span id="infoSub">DÍAS TRABAJADOS 9 / 21 · AVANCE 42,9%</span></div>
+    <span class="live">EN VIVO</span>
+  </section>
+  <div class="cabeceraDerecha">
+    <div class="topMetricsTv43">
+      <div class="kpi" id="kpisTop">
+        <section class="kpiBox"><span>Permisos</span><b class="blue" id="kpiPerm">72</b><small id="kpiPermSub">esp. hoy 162</small></section>
+        <section class="kpiBox"><span>Edif. -15%</span><b class="cyan" id="kpiEdif">52</b><small id="kpiEdifSub">esp. hoy 31</small></section>
+        <section class="kpiBox"><span>Visitas</span><b class="green" id="kpiVis">522</b><small id="kpiVisSub">esp. hoy 514</small></section>
+        <section class="kpiBox"><span>PPD Prom.</span><b class="orange" id="kpiPPD">1,3</b><small id="kpiPPDSub">obj 3,0</small></section>
+        <section class="kpiBox"><span>Conversión</span><b class="violet" id="kpiConv">13,3%</b><small>promedio</small></section>
+      </div>
+      <section class="clock"><b id="time">--:--</b><span id="date">--</span></section>
+    </div>
+    <div class="objetivosPanelEditable">
+      <div class="objetivosGridEditable primera">
+        <div class="objetivoCajaEditable"><div class="objetivoTituloEditable">DÍAS HÁBILES</div><div class="objetivoValorEditable" id="objDiasHabiles">21</div></div>
+        <div class="objetivoCajaEditable"><div class="objetivoTituloEditable">DÍAS TRABAJADOS</div><div class="objetivoValorEditable" id="objDiasTrabajados">9</div></div>
+        <div class="objetivoCajaEditable"><div class="objetivoTituloEditable">OBJETIVO PERMISOS</div><div class="objetivoValorEditable" id="objPermisosMes">378</div></div>
+        <div class="objetivoCajaEditable"><div class="objetivoTituloEditable">EDIF. -15%</div><div class="objetivoValorEditable" id="objEdifMes">72</div></div>
+      </div>
+      <div class="objetivosGridEditable segunda">
+        <div class="objetivoCajaEditable"><div class="objetivoTituloEditable">OBJETIVO VISITAS</div><div class="objetivoValorEditable" id="objVisitasMes">1200</div></div>
+        <div class="objetivoCajaEditable"><div class="objetivoTituloEditable">OBJETIVO PPD</div><div class="objetivoValorEditable" id="objPPDMes">3</div></div>
+        <div class="objetivoCajaEditable objetivoCalculado"><div class="objetivoTituloEditable">RESTAN DÍAS</div><div class="objetivoValorEditable" id="objRestanDias">12</div></div>
+        <div class="objetivoCajaEditable objetivoCalculado"><div class="objetivoTituloEditable">PERMISOS FALTANTES</div><div class="objetivoValorEditable" id="objPermFaltantes">306</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<main class="stage" id="stage"><section class="slide grid1 active"><div class="card"><h2>Resumen Ejecutivo · Objetivo esperado a hoy</h2><div class="kpiRow"><div class="bigMetric"><span>Permisos</span><b class="blue" id="bigPerm">72</b><small id="bigPermCumpl">44% vs esperado hoy</small></div><div class="bigMetric"><span>Edificios -15%</span><b class="cyan" id="bigEdif">52</b><small id="bigEdifCumpl">169% vs esperado hoy</small></div><div class="bigMetric"><span>Visitas</span><b class="green" id="bigVis">522</b><small id="bigVisCumpl">102% vs esperado hoy</small></div><div class="bigMetric"><span>PPD</span><b class="orange" id="bigPPD">1,3</b><small id="bigPPDCumpl">44% vs objetivo</small></div></div><div class="statusGrid"><div class="statusBox"><h3>Cumplimiento vs esperado hoy</h3><div id="statusLines"><div class="statusLine"><span>🔴 Permisos</span><b class="bad">44%</b></div><div class="statusLine"><span>🟢 Edificios -15%</span><b class="good">169%</b></div><div class="statusLine"><span>🟢 Visitas</span><b class="good">102%</b></div><div class="statusLine"><span>🔴 PPD</span><b class="bad">44%</b></div></div><div class="analysisNote" id="analysisNote">Todos los gestores participan del análisis ejecutivo.</div><div class="gestorSelector" id="gestorSelector"><div class="gestorChip "><span>Agustina Castillo</span><button onclick="toggleGestor(&#39;Agustina Castillo&#39;)">SI</button></div><div class="gestorChip "><span>Daniela Orjes</span><button onclick="toggleGestor(&#39;Daniela Orjes&#39;)">SI</button></div><div class="gestorChip "><span>German Portela</span><button onclick="toggleGestor(&#39;German Portela&#39;)">SI</button></div><div class="gestorChip "><span>Gustavo Juarez</span><button onclick="toggleGestor(&#39;Gustavo Juarez&#39;)">SI</button></div><div class="gestorChip "><span>Leon Lopez</span><button onclick="toggleGestor(&#39;Leon Lopez&#39;)">SI</button></div><div class="gestorChip "><span>Nahuel Olmos</span><button onclick="toggleGestor(&#39;Nahuel Olmos&#39;)">SI</button></div></div></div><div class="statusBox"><h3>Lectura gerencial</h3><p class="conclusion" id="readout">El mejor avance relativo está en <strong class="good">Edificios -15%</strong> con 169%. El indicador más atrasado es <strong class="bad">Permisos</strong> con 44%.</p><div class="actionBox" id="generalState">🟡 Estado general: <strong>ALERTA OPERATIVA</strong></div></div></div></div></section>
+<section class="slide grid1"><div class="card"><h2>Permisos por gestor</h2><div class="chartHeader" id="headPerm"><div class="chartMini"><span>Real</span><b>72</b></div><div class="chartMini"><span>Obj. mensual</span><b>378</b></div><div class="chartMini"><span>Esperado hoy</span><b>162</b></div><div class="chartMini"><span>Cumpl.</span><b class="bad">44%</b></div></div><div class="chartBox" id="chartPerm"><svg viewBox="0 0 1200 600"><defs><lineargradient id="gpermisos" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#60a5fa"></stop><stop offset="1" stop-color="#1d4ed8"></stop></lineargradient></defs><line class="gridLine" x1="70" x2="1080" y1="48" y2="48"></line><line class="gridLine" x1="70" x2="1080" y1="159.75" y2="159.75"></line><line class="gridLine" x1="70" x2="1080" y1="271.5" y2="271.5"></line><line class="gridLine" x1="70" x2="1080" y1="383.25" y2="383.25"></line><line class="gridLine" x1="70" x2="1080" y1="495" y2="495"></line><line class="axisLine" x1="70" x2="1080" y1="495" y2="495"></line><line class="objLine" x1="70" x2="1080" y1="116.18644067796606" y2="116.18644067796606"></line><text class="objText" x="1090" y="122.18644067796606">OBJ MES 63</text><line class="expLine" x1="70" x2="1080" y1="332.6513317191283" y2="332.6513317191283"></line><text class="avgText" x="1090" y="360.6513317191283">ESP HOY 27</text><rect x="107.87500000000001" y="386.7675544794189" width="92.58333333333334" height="108.23244552058111" rx="14" fill="url(#gpermisos)"></rect><text class="valText" x="154.16666666666669" y="374.7675544794189" text-anchor="middle">18</text><text class="axisText" x="154.16666666666669" y="531" text-anchor="middle"><tspan x="154.16666666666669">Agustina</tspan><tspan x="154.16666666666669" dy="28">Castillo</tspan></text><rect x="276.2083333333333" y="386.7675544794189" width="92.58333333333334" height="108.23244552058111" rx="14" fill="url(#gpermisos)"></rect><text class="valText" x="322.5" y="374.7675544794189" text-anchor="middle">18</text><text class="axisText" x="322.5" y="531" text-anchor="middle"><tspan x="322.5">Daniela</tspan><tspan x="322.5" dy="28">Orjes</tspan></text><rect x="444.5416666666667" y="422.8450363196126" width="92.58333333333334" height="72.15496368038743" rx="14" fill="url(#gpermisos)"></rect><text class="valText" x="490.83333333333337" y="410.8450363196126" text-anchor="middle">12</text><text class="axisText" x="490.83333333333337" y="531" text-anchor="middle"><tspan x="490.83333333333337">German</tspan><tspan x="490.83333333333337" dy="28">Portela</tspan></text><rect x="612.875" y="464.93543179983857" width="92.58333333333334" height="30.064568200161432" rx="14" fill="url(#gpermisos)"></rect><text class="valText" x="659.1666666666666" y="452.93543179983857" text-anchor="middle">5</text><text class="axisText" x="659.1666666666666" y="531" text-anchor="middle"><tspan x="659.1666666666666">Gustavo</tspan><tspan x="659.1666666666666" dy="28">Juarez</tspan></text><rect x="781.2083333333334" y="476.96125907990313" width="92.58333333333334" height="18.03874092009687" rx="14" fill="url(#gpermisos)"></rect><text class="valText" x="827.5" y="464.96125907990313" text-anchor="middle">3</text><text class="axisText" x="827.5" y="531" text-anchor="middle"><tspan x="827.5">Leon</tspan><tspan x="827.5" dy="28">Lopez</tspan></text><rect x="949.5416666666667" y="398.79338175948345" width="92.58333333333334" height="96.20661824051655" rx="14" fill="url(#gpermisos)"></rect><text class="valText" x="995.8333333333334" y="386.79338175948345" text-anchor="middle">16</text><text class="axisText" x="995.8333333333334" y="531" text-anchor="middle"><tspan x="995.8333333333334">Nahuel</tspan><tspan x="995.8333333333334" dy="28">Olmos</tspan></text></svg></div></div></section>
+<section class="slide grid1"><div class="card"><h2>Edificios -15% por gestor</h2><div class="chartHeader" id="headEdif"><div class="chartMini"><span>Real</span><b>52</b></div><div class="chartMini"><span>Obj. mensual</span><b>72</b></div><div class="chartMini"><span>Esperado hoy</span><b>31</b></div><div class="chartMini"><span>Cumpl.</span><b class="good">169%</b></div></div><div class="chartBox" id="chartEdif"><svg viewBox="0 0 1200 600"><defs><lineargradient id="gedif15" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5eead4"></stop><stop offset="1" stop-color="#0f766e"></stop></lineargradient></defs><line class="gridLine" x1="70" x2="1080" y1="48" y2="48"></line><line class="gridLine" x1="70" x2="1080" y1="159.75" y2="159.75"></line><line class="gridLine" x1="70" x2="1080" y1="271.5" y2="271.5"></line><line class="gridLine" x1="70" x2="1080" y1="383.25" y2="383.25"></line><line class="gridLine" x1="70" x2="1080" y1="495" y2="495"></line><line class="axisLine" x1="70" x2="1080" y1="495" y2="495"></line><line class="objLine" x1="70" x2="1080" y1="116.18644067796612" y2="116.18644067796612"></line><text class="objText" x="1090" y="122.18644067796612">OBJ MES 12</text><line class="expLine" x1="70" x2="1080" y1="332.65133171912834" y2="332.65133171912834"></line><text class="avgText" x="1090" y="360.65133171912834">ESP HOY 5,1</text><rect x="107.87500000000001" y="242.45762711864407" width="92.58333333333334" height="252.54237288135593" rx="14" fill="url(#gedif15)"></rect><text class="valText" x="154.16666666666669" y="230.45762711864407" text-anchor="middle">8</text><text class="axisText" x="154.16666666666669" y="531" text-anchor="middle"><tspan x="154.16666666666669">Agustina</tspan><tspan x="154.16666666666669" dy="28">Castillo</tspan></text><rect x="276.2083333333333" y="242.45762711864407" width="92.58333333333334" height="252.54237288135593" rx="14" fill="url(#gedif15)"></rect><text class="valText" x="322.5" y="230.45762711864407" text-anchor="middle">8</text><text class="axisText" x="322.5" y="531" text-anchor="middle"><tspan x="322.5">Daniela</tspan><tspan x="322.5" dy="28">Orjes</tspan></text><rect x="444.5416666666667" y="116.18644067796612" width="92.58333333333334" height="378.8135593220339" rx="14" fill="url(#gedif15)"></rect><text class="valText" x="490.83333333333337" y="104.18644067796612" text-anchor="middle">12</text><text class="axisText" x="490.83333333333337" y="531" text-anchor="middle"><tspan x="490.83333333333337">German</tspan><tspan x="490.83333333333337" dy="28">Portela</tspan></text><rect x="612.875" y="179.32203389830505" width="92.58333333333334" height="315.67796610169495" rx="14" fill="url(#gedif15)"></rect><text class="valText" x="659.1666666666666" y="167.32203389830505" text-anchor="middle">10</text><text class="axisText" x="659.1666666666666" y="531" text-anchor="middle"><tspan x="659.1666666666666">Gustavo</tspan><tspan x="659.1666666666666" dy="28">Juarez</tspan></text><rect x="781.2083333333334" y="337.16101694915255" width="92.58333333333334" height="157.83898305084745" rx="14" fill="url(#gedif15)"></rect><text class="valText" x="827.5" y="325.16101694915255" text-anchor="middle">5</text><text class="axisText" x="827.5" y="531" text-anchor="middle"><tspan x="827.5">Leon</tspan><tspan x="827.5" dy="28">Lopez</tspan></text><rect x="949.5416666666667" y="210.88983050847457" width="92.58333333333334" height="284.1101694915254" rx="14" fill="url(#gedif15)"></rect><text class="valText" x="995.8333333333334" y="198.88983050847457" text-anchor="middle">9</text><text class="axisText" x="995.8333333333334" y="531" text-anchor="middle"><tspan x="995.8333333333334">Nahuel</tspan><tspan x="995.8333333333334" dy="28">Olmos</tspan></text></svg></div></div></section>
+<section class="slide grid1"><div class="card"><h2>Visitas por gestor</h2><div class="chartHeader" id="headVis"><div class="chartMini"><span>Real</span><b>522</b></div><div class="chartMini"><span>Obj. mensual</span><b>1.200</b></div><div class="chartMini"><span>Esperado hoy</span><b>514</b></div><div class="chartMini"><span>Cumpl.</span><b class="good">102%</b></div></div><div class="chartBox" id="chartVis"><svg viewBox="0 0 1200 600"><defs><lineargradient id="gvisitas" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#86efac"></stop><stop offset="1" stop-color="#15803d"></stop></lineargradient></defs><line class="gridLine" x1="70" x2="1080" y1="48" y2="48"></line><line class="gridLine" x1="70" x2="1080" y1="159.75" y2="159.75"></line><line class="gridLine" x1="70" x2="1080" y1="271.5" y2="271.5"></line><line class="gridLine" x1="70" x2="1080" y1="383.25" y2="383.25"></line><line class="gridLine" x1="70" x2="1080" y1="495" y2="495"></line><line class="axisLine" x1="70" x2="1080" y1="495" y2="495"></line><line class="objLine" x1="70" x2="1080" y1="116.18644067796612" y2="116.18644067796612"></line><text class="objText" x="1090" y="122.18644067796612">OBJ MES 200</text><line class="expLine" x1="70" x2="1080" y1="332.65133171912834" y2="332.65133171912834"></line><text class="avgText" x="1090" y="360.65133171912834">ESP HOY 85,7</text><rect x="107.87500000000001" y="315.06355932203394" width="92.58333333333334" height="179.93644067796606" rx="14" fill="url(#gvisitas)"></rect><text class="valText" x="154.16666666666669" y="303.06355932203394" text-anchor="middle">95</text><text class="axisText" x="154.16666666666669" y="531" text-anchor="middle"><tspan x="154.16666666666669">Agustina</tspan><tspan x="154.16666666666669" dy="28">Castillo</tspan></text><rect x="276.2083333333333" y="316.95762711864404" width="92.58333333333334" height="178.04237288135596" rx="14" fill="url(#gvisitas)"></rect><text class="valText" x="322.5" y="304.95762711864404" text-anchor="middle">94</text><text class="axisText" x="322.5" y="531" text-anchor="middle"><tspan x="322.5">Daniela</tspan><tspan x="322.5" dy="28">Orjes</tspan></text><rect x="444.5416666666667" y="324.5338983050848" width="92.58333333333334" height="170.4661016949152" rx="14" fill="url(#gvisitas)"></rect><text class="valText" x="490.83333333333337" y="312.5338983050848" text-anchor="middle">90</text><text class="axisText" x="490.83333333333337" y="531" text-anchor="middle"><tspan x="490.83333333333337">German</tspan><tspan x="490.83333333333337" dy="28">Portela</tspan></text><rect x="612.875" y="349.1567796610169" width="92.58333333333334" height="145.8432203389831" rx="14" fill="url(#gvisitas)"></rect><text class="valText" x="659.1666666666666" y="337.1567796610169" text-anchor="middle">77</text><text class="axisText" x="659.1666666666666" y="531" text-anchor="middle"><tspan x="659.1666666666666">Gustavo</tspan><tspan x="659.1666666666666" dy="28">Juarez</tspan></text><rect x="781.2083333333334" y="352.9449152542373" width="92.58333333333334" height="142.0550847457627" rx="14" fill="url(#gvisitas)"></rect><text class="valText" x="827.5" y="340.9449152542373" text-anchor="middle">75</text><text class="axisText" x="827.5" y="531" text-anchor="middle"><tspan x="827.5">Leon</tspan><tspan x="827.5" dy="28">Lopez</tspan></text><rect x="949.5416666666667" y="322.6398305084746" width="92.58333333333334" height="172.36016949152543" rx="14" fill="url(#gvisitas)"></rect><text class="valText" x="995.8333333333334" y="310.6398305084746" text-anchor="middle">91</text><text class="axisText" x="995.8333333333334" y="531" text-anchor="middle"><tspan x="995.8333333333334">Nahuel</tspan><tspan x="995.8333333333334" dy="28">Olmos</tspan></text></svg></div></div></section>
+<section class="slide grid1"><div class="card"><h2>Conversión permisos / visitas</h2><div class="chartHeader" id="headConv"><div class="chartMini"><span>Real</span><b>13,3%</b></div><div class="chartMini"><span>Obj. mensual</span><b>30,0%</b></div><div class="chartMini"><span>Esperado hoy</span><b>30,0%</b></div><div class="chartMini"><span>Cumpl.</span><b class="bad">44%</b></div></div><div class="chartBox" id="chartConv"><svg viewBox="0 0 1200 600"><defs><lineargradient id="gconversion" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fdba74"></stop><stop offset="1" stop-color="#ea580c"></stop></lineargradient></defs><line class="gridLine" x1="70" x2="1080" y1="48" y2="48"></line><line class="gridLine" x1="70" x2="1080" y1="159.75" y2="159.75"></line><line class="gridLine" x1="70" x2="1080" y1="271.5" y2="271.5"></line><line class="gridLine" x1="70" x2="1080" y1="383.25" y2="383.25"></line><line class="gridLine" x1="70" x2="1080" y1="495" y2="495"></line><line class="axisLine" x1="70" x2="1080" y1="495" y2="495"></line><line class="objLine" x1="70" x2="1080" y1="116.18644067796612" y2="116.18644067796612"></line><text class="objText" x="1090" y="122.18644067796612">OBJ MES 30,0%</text><line class="expLine" x1="70" x2="1080" y1="116.18644067796612" y2="116.18644067796612"></line><text class="avgText" x="1090" y="144.18644067796612">ESP HOY 30,0%</text><rect x="107.87500000000001" y="255.7493309545049" width="92.58333333333334" height="239.2506690454951" rx="14" fill="url(#gconversion)"></rect><text class="valText" x="154.16666666666669" y="243.7493309545049" text-anchor="middle">18,9%</text><text class="axisText" x="154.16666666666669" y="531" text-anchor="middle"><tspan x="154.16666666666669">Agustina</tspan><tspan x="154.16666666666669" dy="28">Castillo</tspan></text><rect x="276.2083333333333" y="253.20411107104218" width="92.58333333333334" height="241.79588892895782" rx="14" fill="url(#gconversion)"></rect><text class="valText" x="322.5" y="241.20411107104218" text-anchor="middle">19,1%</text><text class="axisText" x="322.5" y="531" text-anchor="middle"><tspan x="322.5">Daniela</tspan><tspan x="322.5" dy="28">Orjes</tspan></text><rect x="444.5416666666667" y="326.638418079096" width="92.58333333333334" height="168.36158192090397" rx="14" fill="url(#gconversion)"></rect><text class="valText" x="490.83333333333337" y="314.638418079096" text-anchor="middle">13,3%</text><text class="axisText" x="490.83333333333337" y="531" text-anchor="middle"><tspan x="490.83333333333337">German</tspan><tspan x="490.83333333333337" dy="28">Portela</tspan></text><rect x="612.875" y="413.00572309046885" width="92.58333333333334" height="81.99427690953115" rx="14" fill="url(#gconversion)"></rect><text class="valText" x="659.1666666666666" y="401.00572309046885" text-anchor="middle">6,5%</text><text class="axisText" x="659.1666666666666" y="531" text-anchor="middle"><tspan x="659.1666666666666">Gustavo</tspan><tspan x="659.1666666666666" dy="28">Juarez</tspan></text><rect x="781.2083333333334" y="444.49152542372883" width="92.58333333333334" height="50.50847457627117" rx="14" fill="url(#gconversion)"></rect><text class="valText" x="827.5" y="432.49152542372883" text-anchor="middle">4,0%</text><text class="axisText" x="827.5" y="531" text-anchor="middle"><tspan x="827.5">Leon</tspan><tspan x="827.5" dy="28">Lopez</tspan></text><rect x="949.5416666666667" y="272.9847271372695" width="92.58333333333334" height="222.0152728627305" rx="14" fill="url(#gconversion)"></rect><text class="valText" x="995.8333333333334" y="260.9847271372695" text-anchor="middle">17,6%</text><text class="axisText" x="995.8333333333334" y="531" text-anchor="middle"><tspan x="995.8333333333334">Nahuel</tspan><tspan x="995.8333333333334" dy="28">Olmos</tspan></text></svg></div></div></section>
+<section class="slide grid1"><div class="card"><h2>Productividad PPD por gestor</h2><div class="chartHeader" id="headPPD"><div class="chartMini"><span>Real</span><b>1</b></div><div class="chartMini"><span>Obj. mensual</span><b>3</b></div><div class="chartMini"><span>Esperado hoy</span><b>3</b></div><div class="chartMini"><span>Cumpl.</span><b class="bad">44%</b></div></div><div class="chartBox" id="chartPPD"><svg viewBox="0 0 1200 600"><line class="gridLine" x1="70" x2="1080" y1="48" y2="48"></line><line class="gridLine" x1="70" x2="1080" y1="159.75" y2="159.75"></line><line class="gridLine" x1="70" x2="1080" y1="271.5" y2="271.5"></line><line class="gridLine" x1="70" x2="1080" y1="383.25" y2="383.25"></line><line class="gridLine" x1="70" x2="1080" y1="495" y2="495"></line><line class="axisLine" x1="70" x2="1080" y1="495" y2="495"></line><line class="objLine" x1="70" x2="1080" y1="116.18644067796612" y2="116.18644067796612"></line><text class="objText" x="1090" y="122.18644067796612">OBJ 3,0</text><polyline class="lineGraph" points="70,242.45762711864407 272,242.45762711864407 474,326.638418079096 676,424.84934086629005 878,452.909604519774 1080,270.5178907721281"></polyline><circle class="point" cx="70" cy="242.45762711864407" r="8"></circle><text class="valText" x="70" y="224.45762711864407" text-anchor="middle">2,0</text><text class="axisText" x="70" y="531" text-anchor="middle"><tspan x="70">Agustina</tspan><tspan x="70" dy="28">Castillo</tspan></text><circle class="point" cx="272" cy="242.45762711864407" r="8"></circle><text class="valText" x="272" y="224.45762711864407" text-anchor="middle">2,0</text><text class="axisText" x="272" y="531" text-anchor="middle"><tspan x="272">Daniela</tspan><tspan x="272" dy="28">Orjes</tspan></text><circle class="point" cx="474" cy="326.638418079096" r="8"></circle><text class="valText" x="474" y="308.638418079096" text-anchor="middle">1,3</text><text class="axisText" x="474" y="531" text-anchor="middle"><tspan x="474">German</tspan><tspan x="474" dy="28">Portela</tspan></text><circle class="point" cx="676" cy="424.84934086629005" r="8"></circle><text class="valText" x="676" y="406.84934086629005" text-anchor="middle">0,6</text><text class="axisText" x="676" y="531" text-anchor="middle"><tspan x="676">Gustavo</tspan><tspan x="676" dy="28">Juarez</tspan></text><circle class="point" cx="878" cy="452.909604519774" r="8"></circle><text class="valText" x="878" y="434.909604519774" text-anchor="middle">0,3</text><text class="axisText" x="878" y="531" text-anchor="middle"><tspan x="878">Leon</tspan><tspan x="878" dy="28">Lopez</tspan></text><circle class="point" cx="1080" cy="270.5178907721281" r="8"></circle><text class="valText" x="1080" y="252.5178907721281" text-anchor="middle">1,8</text><text class="axisText" x="1080" y="531" text-anchor="middle"><tspan x="1080">Nahuel</tspan><tspan x="1080" dy="28">Olmos</tspan></text></svg></div></div></section>
+<section class="slide grid1"><div class="card"><h2>Ranking Ejecutivo</h2><table class="table" id="rankTable"><thead><tr><th>Ejecutivo</th><th>Rank</th><th>Gestor</th><th>Permisos</th><th>-15%</th><th>Visitas</th><th>PPD</th><th>Conv.</th><th>Estado</th></tr></thead><tbody><tr class=""><td>SI</td><td>🏆</td><td>Agustina Castillo</td><td>18</td><td>8</td><td>95</td><td>2,0</td><td>18,9%</td><td>🟢</td></tr><tr class=""><td>SI</td><td>2</td><td>Daniela Orjes</td><td>18</td><td>8</td><td>94</td><td>2,0</td><td>19,1%</td><td>🟢</td></tr><tr class=""><td>SI</td><td>3</td><td>Nahuel Olmos</td><td>16</td><td>9</td><td>91</td><td>1,8</td><td>17,6%</td><td>🟢</td></tr><tr class=""><td>SI</td><td>4</td><td>German Portela</td><td>12</td><td>12</td><td>90</td><td>1,3</td><td>13,3%</td><td>🟢</td></tr><tr class=""><td>SI</td><td>5</td><td>Gustavo Juarez</td><td>5</td><td>10</td><td>77</td><td>0,6</td><td>6,5%</td><td>🟡</td></tr><tr class=""><td>SI</td><td>6</td><td>Leon Lopez</td><td>3</td><td>5</td><td>75</td><td>0,3</td><td>4,0%</td><td>🔴</td></tr></tbody></table></div></section>
+</main>
+<nav class="controlbar"><button class="ctrl" onclick="prevSlide()">←</button><button class="ctrl" onclick="nextSlide()">→</button><button class="ctrl" onclick="toggleAuto()" id="autoBtn">▶</button><button class="ctrl" onclick="fullScreen()">▣</button><span id="lastUpdate" style="margin-left:8px;color:#a8bdd8;font-size:11px;font-weight:900;white-space:nowrap">Última actualización: 11/06/2026, 09:45 p. m.</span></nav><div class="progress"><span id="progress" style="width: 0%;"></span></div><div class="uploadMsg" id="uploadMsg">Excel actualizado y guardado en este navegador.</div>
+<script>
+let DATA = [{"gestor": "Agustina Castillo", "permisos": 5.0, "edif15": 5.0, "visitas": 52.0, "conversion": 0.09615384615384616, "ppd": 1.25, "objPermisos": 63.0, "objEdif15": 12.0, "objVisitas": 200.0, "objPPD": 3.0}, {"gestor": "Daniela Orjes", "permisos": 7.0, "edif15": 6.0, "visitas": 48.0, "conversion": 0.14583333333333334, "ppd": 1.75, "objPermisos": 63.0, "objEdif15": 12.0, "objVisitas": 200.0, "objPPD": 3.0}, {"gestor": "German Portela", "permisos": 8.0, "edif15": 6.0, "visitas": 60.0, "conversion": 0.13333333333333333, "ppd": 2.0, "objPermisos": 63.0, "objEdif15": 12.0, "objVisitas": 200.0, "objPPD": 3.0}, {"gestor": "Gustavo Juarez", "permisos": 3.0, "edif15": 6.0, "visitas": 46.0, "conversion": 0.06521739130434782, "ppd": 0.75, "objPermisos": 63.0, "objEdif15": 12.0, "objVisitas": 200.0, "objPPD": 3.0}, {"gestor": "Leon Lopez", "permisos": 0.0, "edif15": 0.0, "visitas": 50.0, "conversion": 0.0, "ppd": 0.0, "objPermisos": 63.0, "objEdif15": 12.0, "objVisitas": 200.0, "objPPD": 3.0}, {"gestor": "Nahuel Olmos", "permisos": 9.0, "edif15": 7.0, "visitas": 57.0, "conversion": 0.15789473684210525, "ppd": 2.25, "objPermisos": 63.0, "objEdif15": 12.0, "objVisitas": 200.0, "objPPD": 3.0}];
+let CONFIG = {"fechaInicio": "01/06/2026", "diasLaborables": 21.0, "diasTrabajados": 9.0, "diasRestantes": 12.0, "avanceMes": 0.42857142857142855, "objPermisosXGestor": 63.0, "objEdif15XGestor": 12.0, "objVisitasXGestor": 200.0, "objPPD": 3.0, "objConversion": 0.3};
+let excludedGestores = new Set(JSON.parse(localStorage.getItem('edp_tv43_excluidos_v4') || '["German Portela"]'));
+const fmt=n=>Math.round(Number(n)||0).toLocaleString('es-AR'); const fmt1=n=>Number(n||0).toLocaleString('es-AR',{minimumFractionDigits:1,maximumFractionDigits:1}); const pct=n=>(Number(n||0)*100).toLocaleString('es-AR',{minimumFractionDigits:0,maximumFractionDigits:0})+'%'; const pct1=n=>(Number(n||0)*100).toLocaleString('es-AR',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';
+function cls(v){return v>=.90?'good':(v>=.55?'warn':'bad')} function sem(v){return v>=.90?'🟢':(v>=.55?'🟡':'🔴')} function shortName(n){let p=String(n).split(' ');return p[0]+' '+(p[1]||'')}
+function updateClock(){const d=new Date();time.textContent=d.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});date.textContent=d.toLocaleDateString('es-AR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'})} setInterval(updateClock,1000); updateClock();
+function execData(){return DATA.filter(d=>!excludedGestores.has(d.gestor))}
+function metricRows(){const rows=execData(); return rows.length?rows:DATA}
+function getConfigVal(k,def){let v=CONFIG[k]; return (v===undefined||v===null||v==='')?def:Number(v)}
+function calcMetrics(rows=metricRows()){const n=Math.max(1,rows.length), avance=getConfigVal('avanceMes', getConfigVal('diasTrabajados',9)/getConfigVal('diasLaborables',21)); const objP=getConfigVal('objPermisosXGestor',63), objE=getConfigVal('objEdif15XGestor',12), objV=getConfigVal('objVisitasXGestor',200), objPPD=getConfigVal('objPPD',3), objC=getConfigVal('objConversion',.30); const totPerm=rows.reduce((a,d)=>a+(+d.permisos||0),0), totEdif=rows.reduce((a,d)=>a+(+d.edif15||0),0), totVis=rows.reduce((a,d)=>a+(+d.visitas||0),0); const avgPPD=rows.reduce((a,d)=>a+(+d.ppd||0),0)/n; const avgConv=rows.reduce((a,d)=>a+(+d.conversion||0),0)/n; const objPermMensual=objP*n, objEdifMensual=objE*n, objVisMensual=objV*n; const expPerm=objPermMensual*avance, expEdif=objEdifMensual*avance, expVis=objVisMensual*avance; const score=d=>(+d.permisos||0)+(+d.edif15||0)+(+d.visitas||0)/20+(+d.ppd||0)*5; const ranked=[...rows].sort((a,b)=>score(b)-score(a)); return {n,avance,totPerm,totEdif,totVis,avgPPD,avgConv,objPPD,objC,objPermMensual,objEdifMensual,objVisMensual,expPerm,expEdif,expVis,best:ranked[0]?.gestor||'',low:ranked[ranked.length-1]?.gestor||''}}
+function showMsg(txt){uploadMsg.textContent=txt;uploadMsg.classList.add('show');setTimeout(()=>uploadMsg.classList.remove('show'),4200)}
+function toggleGestor(nombre){if(excludedGestores.has(nombre)) excludedGestores.delete(nombre); else excludedGestores.add(nombre); localStorage.setItem('edp_tv43_excluidos_v4', JSON.stringify([...excludedGestores])); drawAll();}
+function renderGestorSelector(){gestorSelector.innerHTML=DATA.map(d=>{const off=excludedGestores.has(d.gestor); return `<div class="gestorChip ${off?'off':''}"><span>${d.gestor}</span><button onclick="toggleGestor('${String(d.gestor).replace(/'/g,"\'")}')">${off?'NO':'SI'}</button></div>`}).join(''); const excl=[...excludedGestores].filter(n=>DATA.some(d=>d.gestor===n)); analysisNote.innerHTML=excl.length?`Excluidos del análisis ejecutivo: <strong>${excl.join(', ')}</strong>. Siguen visibles en gráficos.`:'Todos los gestores participan del análisis ejecutivo.'}
+function updateSummary(){const E=calcMetrics(); const cP=E.expPerm?E.totPerm/E.expPerm:0,cE=E.expEdif?E.totEdif/E.expEdif:0,cV=E.expVis?E.totVis/E.expVis:0,cPPD=E.objPPD?E.avgPPD/E.objPPD:0; infoSub.innerHTML=`DÍAS TRABAJADOS ${fmt(getConfigVal('diasTrabajados',9))} / ${fmt(getConfigVal('diasLaborables',21))} · AVANCE ${pct1(E.avance)}`; kpiPerm.textContent=fmt(E.totPerm); kpiEdif.textContent=fmt(E.totEdif); kpiVis.textContent=fmt(E.totVis); kpiPPD.textContent=fmt1(E.avgPPD); const kpiConvEl=document.getElementById('kpiConv'); if(kpiConvEl) kpiConvEl.textContent=pct1(E.avgConv); kpiPermSub.textContent=`esp. hoy ${fmt(E.expPerm)}`; kpiEdifSub.textContent=`esp. hoy ${fmt(E.expEdif)}`; kpiVisSub.textContent=`esp. hoy ${fmt(E.expVis)}`; kpiPPDSub.textContent='obj '+fmt1(E.objPPD); bigPerm.textContent=fmt(E.totPerm); bigEdif.textContent=fmt(E.totEdif); bigVis.textContent=fmt(E.totVis); bigPPD.textContent=fmt1(E.avgPPD); bigPermCumpl.textContent=`${pct(cP)} vs esperado hoy`; bigEdifCumpl.textContent=`${pct(cE)} vs esperado hoy`; bigVisCumpl.textContent=`${pct(cV)} vs esperado hoy`; bigPPDCumpl.textContent=`${pct(cPPD)} vs objetivo`; statusLines.innerHTML=[['Permisos',cP],['Edificios -15%',cE],['Visitas',cV],['PPD',cPPD]].map(x=>`<div class="statusLine"><span>${sem(x[1])} ${x[0]}</span><b class="${cls(x[1])}">${pct(x[1])}</b></div>`).join(''); renderGestorSelector(); const best=[['Permisos',cP],['Edificios -15%',cE],['Visitas',cV],['PPD',cPPD]].sort((a,b)=>b[1]-a[1])[0]; const low=[['Permisos',cP],['Edificios -15%',cE],['Visitas',cV],['PPD',cPPD]].sort((a,b)=>a[1]-b[1])[0]; readout.innerHTML=`El mejor avance relativo está en <strong class="${cls(best[1])}">${best[0]}</strong> con ${pct(best[1])}. El indicador más atrasado es <strong class="${cls(low[1])}">${low[0]}</strong> con ${pct(low[1])}.`; const kpiPermisos=cP;
+  let estado='CRÍTICO', icono='🔴', pctClass='estadoPctRojo', textoAccion='Se requiere incrementar la generación de permisos de forma inmediata.';
+  if(kpiPermisos>.60 && kpiPermisos<=.84){
+    estado='EN RÉGIMEN'; icono='🟡'; pctClass='estadoPctAmarillo';
+    textoAccion='El equipo muestra avance parcial, aún por debajo del objetivo.';
+  } else if(kpiPermisos>.84 && kpiPermisos<=.95){
+    estado='ALCANZANDO OBJETIVO'; icono='🟢'; pctClass='estadoPctVerde';
+    textoAccion='El cumplimiento se encuentra dentro del rango esperado.';
+  } else if(kpiPermisos>.95){
+    estado='SUPERANDO OBJETIVO'; icono='🟢'; pctClass='estadoPctVerde';
+    textoAccion='El equipo supera el objetivo mensual proyectado.';
+  }
+  readout.innerHTML='';
+  generalState.innerHTML=`
+    <div class="estadoCard">
+      <div class="estadoHeader">${icono} ESTADO GENERAL: ${estado}</div>
+      <div class="estadoCumplimiento">Cumplimiento KPI Permisos: <strong class="${pctClass}">${pct(kpiPermisos)}</strong></div>
+      <div class="estadoDatos">
+        <div><span>Objetivo mensual:</span><b>${fmt(E.objPermMensual)}</b></div>
+        <div><span>Objetivo esperado hoy:</span><b>${fmt(E.expPerm)}</b></div>
+        <div><span>Resultado actual:</span><b>${fmt(E.totPerm)}</b></div>
+      </div>
+      <div class="estadoAccion">${textoAccion}</div>
+    </div>`;
+  if(document.getElementById('finalConclusion')) finalConclusion.innerHTML=''; if(document.getElementById('actionFocus')) actionFocus.innerHTML='';}
+function chartHead(el, title, real, mensual, esperado, cumpl, isPct=false){el.innerHTML=`<div class="chartMini"><span>Real</span><b>${isPct?pct1(real):fmt(real)}</b></div><div class="chartMini"><span>Obj. mensual</span><b>${isPct?pct1(mensual):fmt(mensual)}</b></div><div class="chartMini"><span>Esperado hoy</span><b>${isPct?pct1(esperado):fmt(esperado)}</b></div><div class="chartMini"><span>Cumpl.</span><b class="${cls(cumpl)}">${pct(cumpl)}</b></div>`}
+function gradient(id,a,b){return `<defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs>`}
+function barChart(el, metric, obj, esperado, colors, isPct=false){const w=1200,h=600,L=70,R=120,T=48,B=105,cw=w-L-R,ch=h-T-B; const vals=DATA.map(d=>+d[metric]||0); const max=Math.max(obj,esperado,...vals)*1.18||1; const xstep=cw/DATA.length,bw=Math.min(96,xstep*.55); const y=v=>T+ch-(v/max)*ch; let s=`<svg viewBox="0 0 ${w} ${h}">${gradient('g'+metric,colors[0],colors[1])}`; for(let i=0;i<=4;i++){let yy=T+i*ch/4;s+=`<line class="gridLine" x1="${L}" x2="${w-R}" y1="${yy}" y2="${yy}"/>`;} s+=`<line class="axisLine" x1="${L}" x2="${w-R}" y1="${T+ch}" y2="${T+ch}"/>`; s+=`<line class="objLine" x1="${L}" x2="${w-R}" y1="${y(obj)}" y2="${y(obj)}"/><text class="objText" x="${w-R+10}" y="${y(obj)+6}">OBJ MES ${isPct?pct1(obj):fmt1(obj).replace(',0','')}</text>`; s+=`<line class="expLine" x1="${L}" x2="${w-R}" y1="${y(esperado)}" y2="${y(esperado)}"/><text class="avgText" x="${w-R+10}" y="${y(esperado)+28}">ESP HOY ${isPct?pct1(esperado):fmt1(esperado).replace(',0','')}</text>`; vals.forEach((v,i)=>{let x=L+xstep*i+xstep/2-bw/2,bh=T+ch-y(v); s+=`<rect x="${x}" y="${y(v)}" width="${bw}" height="${bh}" rx="14" fill="url(#g${metric})"/>`; s+=`<text class="valText" x="${x+bw/2}" y="${y(v)-12}" text-anchor="middle">${isPct?pct1(v):fmt1(v).replace(',0','')}</text>`; let nm=shortName(DATA[i].gestor).split(' '); s+=`<text class="axisText" x="${x+bw/2}" y="${T+ch+36}" text-anchor="middle"><tspan x="${x+bw/2}">${nm[0]}</tspan><tspan x="${x+bw/2}" dy="28">${nm[1]||''}</tspan></text>`;}); el.innerHTML=s+'</svg>';}
+function lineChart(el, metric, obj, esperado){const w=1200,h=600,L=70,R=120,T=48,B=105,cw=w-L-R,ch=h-T-B; const vals=DATA.map(d=>+d[metric]||0); const max=Math.max(obj,esperado,...vals)*1.18||1; const xstep=cw/(DATA.length-1), y=v=>T+ch-(v/max)*ch; let s=`<svg viewBox="0 0 ${w} ${h}">`; for(let i=0;i<=4;i++){let yy=T+i*ch/4;s+=`<line class="gridLine" x1="${L}" x2="${w-R}" y1="${yy}" y2="${yy}"/>`;} s+=`<line class="axisLine" x1="${L}" x2="${w-R}" y1="${T+ch}" y2="${T+ch}"/>`; s+=`<line class="objLine" x1="${L}" x2="${w-R}" y1="${y(obj)}" y2="${y(obj)}"/><text class="objText" x="${w-R+10}" y="${y(obj)+6}">OBJ ${fmt1(obj)}</text>`; let pts=vals.map((v,i)=>`${L+xstep*i},${y(v)}`).join(' '); s+=`<polyline class="lineGraph" points="${pts}"/>`; vals.forEach((v,i)=>{let x=L+xstep*i; s+=`<circle class="point" cx="${x}" cy="${y(v)}" r="8"/><text class="valText" x="${x}" y="${y(v)-18}" text-anchor="middle">${fmt1(v)}</text>`; let nm=shortName(DATA[i].gestor).split(' '); s+=`<text class="axisText" x="${x}" y="${T+ch+36}" text-anchor="middle"><tspan x="${x}">${nm[0]}</tspan><tspan x="${x}" dy="28">${nm[1]||''}</tspan></text>`;}); el.innerHTML=s+'</svg>';}
+function ranking(){const score=d=>(+d.permisos||0)+(+d.edif15||0)+(+d.visitas||0)/20+(+d.ppd||0)*5; const inc=DATA.filter(d=>!excludedGestores.has(d.gestor)).sort((a,b)=>score(b)-score(a)), exc=DATA.filter(d=>excludedGestores.has(d.gestor)).sort((a,b)=>score(b)-score(a)); const rows=[...inc,...exc]; rankTable.innerHTML='<thead><tr><th>Ejecutivo</th><th>Rank</th><th>Gestor</th><th>Permisos</th><th>-15%</th><th>Visitas</th><th>PPD</th><th>Conv.</th><th>Estado</th></tr></thead><tbody>'+rows.map((r,i)=>{const off=excludedGestores.has(r.gestor); const rank=off?'—':(inc.indexOf(r)==0?'🏆':inc.indexOf(r)+1); const state=((r.permisos/((r.objPermisos||63)*getConfigVal('avanceMes',0.42857142857142855)))+(r.edif15/((r.objEdif15||12)*getConfigVal('avanceMes',0.42857142857142855)))+(r.visitas/((r.objVisitas||200)*getConfigVal('avanceMes',0.42857142857142855)))+(r.ppd/(r.objPPD||3)))/4; return `<tr class="${off?'excludedRow':''}"><td><button class="rankToggle ${off?'off':''}" onclick="toggleGestor('${String(r.gestor).replace(/'/g,"\'")}')">${off?'NO':'SI'}</button></td><td>${rank}</td><td>${r.gestor}${off?'<span class="excludeBadge">Fuera análisis</span>':''}</td><td>${fmt(r.permisos)}</td><td>${fmt(r.edif15)}</td><td>${fmt(r.visitas)}</td><td>${fmt1(r.ppd)}</td><td>${pct1(r.conversion)}</td><td>${off?'—':sem(state)}</td></tr>`}).join('')+'</tbody>';}
+function drawAll(){if(!DATA.length)return; updateSummary(); const E=calcMetrics(); chartHead(headPerm,'Permisos',E.totPerm,E.objPermMensual,E.expPerm,E.expPerm?E.totPerm/E.expPerm:0); chartHead(headEdif,'Edificios',E.totEdif,E.objEdifMensual,E.expEdif,E.expEdif?E.totEdif/E.expEdif:0); chartHead(headVis,'Visitas',E.totVis,E.objVisMensual,E.expVis,E.expVis?E.totVis/E.expVis:0); chartHead(headConv,'Conversión',E.avgConv,E.objC,E.objC,E.objC?E.avgConv/E.objC:0,true); chartHead(headPPD,'PPD',E.avgPPD,E.objPPD,E.objPPD,E.objPPD?E.avgPPD/E.objPPD:0); barChart(chartPerm,'permisos',getConfigVal('objPermisosXGestor',63),getConfigVal('objPermisosXGestor',63)*E.avance,['#60a5fa','#1d4ed8']); barChart(chartEdif,'edif15',getConfigVal('objEdif15XGestor',12),getConfigVal('objEdif15XGestor',12)*E.avance,['#5eead4','#0f766e']); barChart(chartVis,'visitas',getConfigVal('objVisitasXGestor',200),getConfigVal('objVisitasXGestor',200)*E.avance,['#86efac','#15803d']); barChart(chartConv,'conversion',E.objC,E.objC,['#fdba74','#ea580c'],true); lineChart(chartPPD,'ppd',E.objPPD,E.objPPD); ranking();}
+// XLSX parser sin librerías externas
+function normalizeHeader(s){return String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9%\-]+/g,' ').trim()} function colIndex(ref){const m=String(ref||'').match(/[A-Z]+/i);if(!m)return 0;let n=0;for(const ch of m[0].toUpperCase())n=n*26+(ch.charCodeAt(0)-64);return n-1} function parseNumber(v){if(v==null)return 0;if(typeof v==='number')return isFinite(v)?v:0;let s=String(v).trim(); if(!s)return 0;let isPct=s.includes('%');s=s.replace(/\s/g,'').replace('%','');if(s.includes(',')&&s.includes('.'))s=s.replace(/\./g,'').replace(',', '.');else if(s.includes(','))s=s.replace(',', '.');let n=parseFloat(s.replace(/[^0-9.\-]/g,'')); if(!isFinite(n))n=0;if(isPct&&Math.abs(n)>1)n/=100;return n}
+async function inflateRaw(buf){if(!('DecompressionStream'in window))throw new Error('Chrome/Edge no soporta lectura XLSX offline en esta versión.'); const stream=new Blob([buf]).stream().pipeThrough(new DecompressionStream('deflate-raw')); return await new Response(stream).arrayBuffer()} function u16(b,o){return b[o]|(b[o+1]<<8)} function u32(b,o){return (b[o]|(b[o+1]<<8)|(b[o+2]<<16)|(b[o+3]<<24))>>>0}
+async function unzipXlsx(ab){const bytes=new Uint8Array(ab),dec=new TextDecoder('utf-8');let eocd=-1;for(let i=bytes.length-22;i>=Math.max(0,bytes.length-70000);i--){if(u32(bytes,i)===0x06054b50){eocd=i;break}} if(eocd<0)throw new Error('No se pudo leer el XLSX.');const total=u16(bytes,eocd+10),cdOffset=u32(bytes,eocd+16),files={};let ptr=cdOffset;for(let i=0;i<total;i++){if(u32(bytes,ptr)!==0x02014b50)break;const method=u16(bytes,ptr+10),compSize=u32(bytes,ptr+20),nameLen=u16(bytes,ptr+28),extraLen=u16(bytes,ptr+30),commentLen=u16(bytes,ptr+32),localOff=u32(bytes,ptr+42);const name=dec.decode(bytes.slice(ptr+46,ptr+46+nameLen));const lh=localOff,lNameLen=u16(bytes,lh+26),lExtraLen=u16(bytes,lh+28),dataStart=lh+30+lNameLen+lExtraLen;const comp=bytes.slice(dataStart,dataStart+compSize);let out;if(method===0)out=comp.buffer.slice(comp.byteOffset,comp.byteOffset+comp.byteLength);else if(method===8)out=await inflateRaw(comp);else out=new ArrayBuffer(0);files[name]=out;ptr+=46+nameLen+extraLen+commentLen} return files}
+function xmlText(s){return String(s||'').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&apos;/g,"'")} function parseSharedStrings(xml){const out=[],items=xml.match(/<si[\s\S]*?<\/si>/g)||[];for(const item of items){let txt='';const parts=item.match(/<t[^>]*>[\s\S]*?<\/t>/g)||[];for(const p of parts)txt+=xmlText(p.replace(/<[^>]+>/g,''));out.push(txt)}return out}
+function parseSheet(xml,shared){
+  const rows=[];
+  const rowBlocks=xml.match(/<row\b[\s\S]*?<\/row>/g)||[];
+  for(const rb of rowBlocks){
+    const arr=[];
+    const cells=rb.match(/<c\b[^>]*(?:\/>|>[\s\S]*?<\/c>)/g)||[];
+    for(const c of cells){
+      const r=(c.match(/\sr="([^"]+)"/)||[])[1]||'';
+      const idx=colIndex(r);
+      const t=(c.match(/\st="([^"]+)"/)||[])[1]||'';
+      let val='';
+      if(t==='inlineStr'){
+        const m=c.match(/<t[^>]*>([\s\S]*?)<\/t>/);
+        val=xmlText(m?m[1]:'');
+      }else{
+        const m=c.match(/<v[^>]*>([\s\S]*?)<\/v>/);
+        val=xmlText(m?m[1]:'');
+        if(t==='s') val=shared[parseInt(val,10)]||'';
+      }
+      arr[idx]=val;
+    }
+    if(arr.some(x=>String(x||'').trim())) rows.push(arr);
+  }
+  return rows;
+}
+function pick(headers, tests){const norm=headers.map(normalizeHeader);for(const test of tests){const idx=norm.findIndex(h=>test(h));if(idx>=0)return idx}return -1}
+function buildDashboardData(rows){
+  let hrow=-1;
+  for(let i=0;i<Math.min(rows.length,30);i++){
+    const line=rows[i].map(normalizeHeader).join(' | ');
+    if((line.includes('gestor')||line.includes('nombre')) && line.includes('permiso') && line.includes('visita')){hrow=i;break;}
+  }
+  if(hrow<0){
+    const muestra=rows.slice(0,5).map(r=>r.join(' | ')).join(' / ');
+    throw new Error('No encontré encabezados con Gestor/Permisos/Visitas. Primeras filas: '+muestra.slice(0,240));
+  }
+  const headers=rows[hrow];
+  const idx={
+    gestor:pick(headers,[h=>h.includes('gestor'),h=>h.includes('nombre')]),
+    permisos:pick(headers,[h=>h==='permisos' || (h.includes('permiso')&&!h.includes('obj')&&!h.includes('cumpl')&&!h.includes('hoy'))]),
+    edif15:pick(headers,[h=>h==='edificios -15%' || h==='edif 15' || ((h.includes('edificio')||h.includes('edif')||h.includes('15'))&&!h.includes('obj')&&!h.includes('cumpl')&&!h.includes('hoy'))]),
+    visitas:pick(headers,[h=>h==='visitas' || (h.includes('visita')&&!h.includes('obj')&&!h.includes('cumpl')&&!h.includes('hoy'))]),
+    conversion:pick(headers,[h=>h.includes('conversion')&&!h.includes('prom')]),
+    ppd:pick(headers,[h=>h==='ppd'||(h.includes('ppd')&&!h.includes('obj')&&!h.includes('cumpl'))]),
+    objPermisos:pick(headers,[h=>(h.includes('obj')||h.includes('objetivo'))&&h.includes('permiso')&&h.includes('mes')]),
+    objEdif15:pick(headers,[h=>(h.includes('obj')||h.includes('objetivo'))&&(h.includes('15')||h.includes('edif'))&&h.includes('mes')]),
+    objVisitas:pick(headers,[h=>(h.includes('obj')||h.includes('objetivo'))&&h.includes('visita')&&h.includes('mes')]),
+    objPPD:pick(headers,[h=>(h.includes('obj')||h.includes('objetivo'))&&h.includes('ppd')])
+  };
+  if(idx.gestor<0 || idx.permisos<0 || idx.visitas<0) throw new Error('Encabezados incompletos. Necesito Gestor, Permisos y Visitas.');
+  let raw=[];
+  for(let r=hrow+1;r<rows.length;r++){
+    let row=rows[r], gestor=String(row[idx.gestor]||'').trim();
+    if(!gestor || /total|objetivo|promedio|indicador|variable/i.test(gestor)) continue;
+    let permisos=parseNumber(row[idx.permisos]);
+    let visitas=parseNumber(row[idx.visitas]);
+    let edif15=idx.edif15>=0?parseNumber(row[idx.edif15]):0;
+    let ppd=idx.ppd>=0?parseNumber(row[idx.ppd]):(permisos/Math.max(1,getConfigVal('diasTrabajados',9)));
+    // La conversión siempre se recalcula para evitar porcentajes mal escalados
+    let conv=visitas?permisos/visitas:0;
+    let objPerm=idx.objPermisos>=0?parseNumber(row[idx.objPermisos]):getConfigVal('objPermisosXGestor',63);
+    let objEd=idx.objEdif15>=0?parseNumber(row[idx.objEdif15]):getConfigVal('objEdif15XGestor',12);
+    let objVis=idx.objVisitas>=0?parseNumber(row[idx.objVisitas]):getConfigVal('objVisitasXGestor',200);
+    let objPpd=idx.objPPD>=0?parseNumber(row[idx.objPPD]):getConfigVal('objPPD',3);
+    raw.push({gestor,permisos,edif15,visitas,conversion:conv,ppd,objPermisos:objPerm||63,objEdif15:objEd||12,objVisitas:objVis||200,objPPD:objPpd||3});
+  }
+  if(!raw.length) throw new Error('El Excel no tiene filas válidas de gestores.');
+  return raw;
+}
+function buildConfig(rows){let out={...CONFIG};for(const row of rows){let k=String(row[0]||'').trim();if(!k)continue;let nk=normalizeHeader(k),v=row[1];if(nk.includes('dias laborables'))out.diasLaborables=parseNumber(v); else if(nk.includes('dias trabajados'))out.diasTrabajados=parseNumber(v); else if(nk.includes('dias restantes'))out.diasRestantes=parseNumber(v); else if(nk.includes('avance'))out.avanceMes=parseNumber(v); else if(nk.includes('objetivo permisos'))out.objPermisosXGestor=parseNumber(v); else if(nk.includes('objetivo edificios')||nk.includes('edificios15'))out.objEdif15XGestor=parseNumber(v); else if(nk.includes('objetivo visitas'))out.objVisitasXGestor=parseNumber(v); else if(nk.includes('objetivo ppd'))out.objPPD=parseNumber(v); else if(nk.includes('objetivo conversion'))out.objConversion=parseNumber(v)} if(!out.avanceMes&&out.diasLaborables)out.avanceMes=out.diasTrabajados/out.diasLaborables;return out}
+async function parseWorkbook(ab){
+  const files=await unzipXlsx(ab), dec=new TextDecoder('utf-8');
+  const shared=files['xl/sharedStrings.xml']?parseSharedStrings(dec.decode(files['xl/sharedStrings.xml'])):[];
+  const sheetNames=Object.keys(files).filter(k=>/^xl\/worksheets\/sheet\d+\.xml$/.test(k)).sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
+  let dashRows=null, cfgRows=null, bestScore=-1;
+  for(const name of sheetNames){
+    const rows=parseSheet(dec.decode(files[name]),shared);
+    const preview=rows.slice(0,30).map(r=>r.map(normalizeHeader).join(' ')).join(' ');
+    if(preview.includes('variable') && (preview.includes('dias') || preview.includes('laborables') || preview.includes('trabajados'))) cfgRows=rows;
+    // Buscar una fila de encabezados, aunque la hoja tenga tablas a la derecha
+    for(let i=0;i<Math.min(rows.length,30);i++){
+      const line=rows[i].map(normalizeHeader).join(' | ');
+      let score=0;
+      if(line.includes('gestor') || line.includes('nombre')) score+=2;
+      if(line.includes('permiso')) score+=2;
+      if(line.includes('visita')) score+=2;
+      if(line.includes('edificio') || line.includes('edif') || line.includes('15')) score+=1;
+      if(score>bestScore){bestScore=score; dashRows=rows;}
+    }
+  }
+  if(bestScore<6) throw new Error('No encontré encabezados con Gestor / Permisos / Visitas. Verificá que la hoja se llame DASHBOARD y tenga esos títulos en la fila 1.');
+  return {DATA:buildDashboardData(dashRows),CONFIG:cfgRows?buildConfig(cfgRows):CONFIG};
+}
+function setLastUpdate(txt){ if(window.lastUpdate) lastUpdate.textContent = txt || ''; }
+async function handleExcelUpload(ev){try{const f=ev.target.files&&ev.target.files[0]; if(!f)return; showMsg('Leyendo Excel...'); const parsed=await parseWorkbook(await f.arrayBuffer()); DATA=parsed.DATA; CONFIG=parsed.CONFIG; const stamp=new Date().toLocaleString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}); localStorage.setItem('edp_tv43_excel_dynamic_v1',JSON.stringify({DATA,CONFIG,updatedAt:stamp,fileName:f.name})); setLastUpdate('Última actualización: '+stamp); drawAll(); show(0); showMsg('Excel actualizado y guardado en este navegador.')}catch(e){console.error(e); showMsg('Error al leer Excel: '+(e.message||e));}finally{ev.target.value='';}}
+function loadSaved(){try{const raw=localStorage.getItem('edp_tv43_excel_dynamic_v1');if(!raw){setLastUpdate('Sin Excel guardado');return;}const s=JSON.parse(raw);if(s.DATA&&s.DATA.length){DATA=s.DATA;CONFIG=s.CONFIG||CONFIG;setLastUpdate('Última actualización: '+(s.updatedAt||'guardada'));}}catch(e){setLastUpdate('Sin Excel guardado');}}
+function clearSavedExcel(){try{localStorage.removeItem('edp_tv43_excel_dynamic_v1');setLastUpdate('Datos guardados eliminados');showMsg('Datos guardados eliminados. Volvé a subir el Excel para actualizar.');}catch(e){showMsg('No se pudieron borrar los datos guardados.');}}
+
+
+// Limpieza para visitas desde imagen: toma solo el número entero de Total General e ignora porcentajes.
+function parseVisitasTotalGeneral(v){
+  let s = String(v ?? '').trim();
+  if(!s) return 0;
+  // Si viene algo como "104 20%" o "104 - 20%", conserva solo la parte anterior al porcentaje.
+  s = s.split('%')[0];
+  const matches = s.match(/-?\d+(?:[\.,]\d+)?/g) || [];
+  if(!matches.length) return 0;
+  // Total General debe ser un valor numérico entero; si hay varios números, usa el primero.
+  return Math.round(parseNumber(matches[0]));
+}
+
+// === IMPORTAR IMAGEN DE AVANCES ===
+const DEFAULT_IMAGE_IMPORT = [
+  {gestor:'Agustina Castillo', firmado:11, base:8, visitas:104},
+  {gestor:'Daniela Orjes', firmado:10, base:8, visitas:105},
+  {gestor:'German Portela', firmado:10, base:2, visitas:86},
+  {gestor:'Gustavo Juarez', firmado:0, base:5, visitas:83},
+  {gestor:'Leon Lopez', firmado:0, base:3, visitas:77},
+  {gestor:'Nahuel Olmos', firmado:6, base:12, visitas:103}
+];
+function fillImageImportTable(rows=DEFAULT_IMAGE_IMPORT){
+  const tbody=document.querySelector('#imageImportTable tbody'); if(!tbody) return;
+  tbody.innerHTML=rows.map(r=>`<tr data-gestor="${r.gestor}"><td>${r.gestor}</td><td><input type="number" value="${r.firmado||0}" data-k="firmado" oninput="recalcImageRow(this)"></td><td><input type="number" value="${r.base||0}" data-k="base" oninput="recalcImageRow(this)"></td><td class="permCalc">${(+r.firmado||0)+(+r.base||0)}</td><td><input type="text" value="${r.visitas||0}" data-k="visitas" oninput="this.value=this.value.replace(/%/g,'')" title="Solo Total General numérico. No pegar el %."></td></tr>`).join('');
+}
+function recalcImageRow(inp){const tr=inp.closest('tr'); const f=Number(tr.querySelector('[data-k="firmado"]').value)||0; const b=Number(tr.querySelector('[data-k="base"]').value)||0; tr.querySelector('.permCalc').textContent=f+b;}
+function resetImageImportTable(){fillImageImportTable(DEFAULT_IMAGE_IMPORT);}
+function openImageImport(ev){
+  const f=ev.target.files&&ev.target.files[0];
+  if(f){const url=URL.createObjectURL(f); const img=document.getElementById('imagePreview'); if(img){img.src=url; img.style.display='block';} const empty=document.getElementById('imagePreviewEmpty'); if(empty) empty.style.display='none';}
+  fillImageImportTable(DEFAULT_IMAGE_IMPORT);
+  document.getElementById('imageImportPanel')?.classList.add('show');
+  ev.target.value='';
+}
+function closeImageImport(){document.getElementById('imageImportPanel')?.classList.remove('show');}
+function applyImageImportData(){
+  try{
+    const trs=[...document.querySelectorAll('#imageImportTable tbody tr')];
+    const dias=getConfigVal('diasTrabajados',9);
+    trs.forEach(tr=>{
+      const gestor=tr.dataset.gestor;
+      const firmado=Number(tr.querySelector('[data-k="firmado"]').value)||0;
+      const base=Number(tr.querySelector('[data-k="base"]').value)||0;
+      const visitas=parseVisitasTotalGeneral(tr.querySelector('[data-k="visitas"]').value);
+      const permisos=firmado+base;
+      let row=DATA.find(d=>normalizeHeader(d.gestor)===normalizeHeader(gestor));
+      if(row){
+        row.permisos=permisos;
+        row.visitas=visitas;
+        row.ppd=permisos/Math.max(1,dias);
+        row.conversion=visitas?permisos/visitas:0;
+      }
+    });
+    const stamp=new Date().toLocaleString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+    localStorage.setItem('edp_tv43_excel_dynamic_v1',JSON.stringify({DATA,CONFIG,updatedAt:stamp,fileName:'imagen avances'}));
+    setLastUpdate('Última actualización por imagen: '+stamp);
+    drawAll(); show(0); closeImageImport(); showMsg('Imagen aplicada: Permisos = Firmado SI + Base Incidencia SI; Visitas = SOLO Total General numérico, sin %.');
+  }catch(e){console.error(e); showMsg('Error al aplicar imagen: '+(e.message||e));}
+}
+// === FIN IMPORTAR IMAGEN DE AVANCES ===
+
+loadSaved(); drawAll();
+let slides=[...document.querySelectorAll('.slide')],idx=0,auto=true,seconds=45,tick=0;function show(i){idx=(i+slides.length)%slides.length;slides.forEach((s,k)=>s.classList.toggle('active',k===idx));tick=0;progress.style.width='0%'} function nextSlide(){show(idx+1)} function prevSlide(){show(idx-1)} function toggleAuto(){auto=!auto;autoBtn.textContent=auto?'Ⅱ':'▶'} function fullScreen(){let e=document.documentElement;if(!document.fullscreenElement)e.requestFullscreen?.();else document.exitFullscreen?.()} setInterval(()=>{if(auto){tick++;progress.style.width=(tick/seconds*100)+'%';if(tick>=seconds)nextSlide()}},1000);
+</script>
+<script>
+(function(){
+  function fmt0(n){return Math.round(Number(n)||0).toLocaleString('es-AR')}
+  function fmt1h(n){return Number(n||0).toLocaleString('es-AR',{minimumFractionDigits:0,maximumFractionDigits:1})}
+  function setText(id,val){var el=document.getElementById(id); if(el) el.textContent=val;}
+  function actualizarObjetivosHeader(){
+    try{
+      if(typeof getConfigVal!=='function' || typeof calcMetrics!=='function') return;
+      var E=calcMetrics();
+      var diasHab=getConfigVal('diasLaborables',21);
+      var diasTrab=getConfigVal('diasTrabajados',Math.round((E.avance||0)*diasHab));
+      setText('objDiasHabiles',fmt0(diasHab));
+      setText('objDiasTrabajados',fmt0(diasTrab));
+      setText('objPermisosMes',fmt0(E.objPermMensual));
+      setText('objEdifMes',fmt0(E.objEdifMensual));
+      setText('objVisitasMes',fmt0(E.objVisMensual));
+      setText('objPPDMes',fmt1h(E.objPPD));
+      setText('objRestanDias',fmt0(Math.max(0,diasHab-diasTrab)));
+      setText('objPermFaltantes',fmt0(Math.max(0,(E.objPermMensual||0)-(E.totPerm||0))));
+    }catch(e){}
+  }
+  var oldDraw=window.drawAll;
+  if(typeof oldDraw==='function'){
+    window.drawAll=function(){oldDraw.apply(this,arguments); actualizarObjetivosHeader();};
+  }
+  setTimeout(actualizarObjetivosHeader,80);
+  setInterval(actualizarObjetivosHeader,2000);
+})();
+</script>
+
+
+
+</body></html>
