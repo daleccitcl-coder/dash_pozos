@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)file:///C:/Users/dalecci/Downloads/Informe_Gerencial_Hojas_7_8_9_Centradas.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informe Gerencial - Edificios en Pozo</title>
+<style>
+:root{
+  --bg:#061423;
+  --panel:#0b2743;
+  --panel2:#0e3154;
+  --line:#0f8eea;
+  --text:#f7fbff;
+  --muted:#a9c1d7;
+  --cyan:#19c8ff;
+  --blue:#1496ff;
+  --yellow:#ffd60a;
+  --green:#45df7a;
+  --orange:#ff9f31;
+  --red:#ff6674;
+  --violet:#b56cff;
+  --turq:#32d6d2;
+  --agustina:#27c7ff;
+  --daniela:#b56cff;
+  --german:#52d273;
+  --nahuel:#ff9f31;
+  --fabricio:#ff6674;
+  --virginia:#32d6d2;
+  --gestor7:#ffd34e;
+  --gestor8:#8f9dff;
+}
+*{box-sizing:border-box}
+html,body{
+  margin:0;
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+  background:#02070c;
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+}
+body{min-height:100vh}
+.app{
+  width:100%;
+  max-width:100vw;
+  min-height:100vh;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(20,150,255,.08), transparent 30%),
+    radial-gradient(circle at 80% 0%, rgba(25,200,255,.06), transparent 25%),
+    var(--bg);
+  padding:14px 18px 16px;
+}
+.topbar{
+  display:grid;
+  grid-template-columns:1.35fr .65fr .55fr .65fr .65fr;
+  gap:12px;
+  align-items:stretch;
+}
+.brand{
+  padding:10px 12px;
+  min-height:112px;
+}
+.brand .small{font-size:24px;font-weight:900;letter-spacing:.3px}
+.brand .big{font-size:42px;line-height:.95;font-weight:1000;color:#11a7ff;letter-spacing:.5px}
+.brand .period{margin-top:10px;font-size:10px;font-weight:800;color:#f3f8fc}
+.kpi{
+  background:linear-gradient(180deg,#0b2743,#081d33);
+  border:1px solid #0c77bc;
+  border-radius:12px;
+  min-height:112px;
+  padding:13px 14px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  box-shadow:0 0 18px rgba(0,143,255,.08) inset;
+}
+.kpi .ico{font-size:30px;width:44px;text-align:center}
+.kpi .label{font-size:14px;font-weight:900;line-height:1}
+.kpi .value{font-size:34px;font-weight:1000;line-height:1;margin-top:3px}
+.kpi .sub{font-size:11px;color:#d7e6f3;margin-top:5px}
+.kpi.obj .value{color:var(--yellow)}
+.nav{
+  margin-top:12px;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:5px;
+}
+.nav button{
+  height:46px;
+  background:#08223b;
+  color:#fff;
+  border:1px solid #0d75b6;
+  border-radius:8px;
+  font-weight:900;
+  font-size:14px;
+  cursor:pointer;
+  transition:.2s;
+}
+.nav button:hover{background:#0b3155}
+.nav button.active{
+  background:linear-gradient(180deg,#1ab9ff,#0a83ef);
+  box-shadow:0 0 18px rgba(0,174,255,.65);
+}
+.sheet{
+  display:none;
+  margin-top:12px;
+  min-height:610px;
+}
+.sheet.active{display:block}
+.card{
+  background:linear-gradient(180deg,#0b2b4b,#08223a);
+  border:1px solid #0f87d0;
+  border-radius:14px;
+  padding:16px;
+  box-shadow:0 0 24px rgba(0,134,255,.08) inset;
+}
+.sheet-title{
+  display:flex;
+  gap:14px;
+  align-items:center;
+  margin-bottom:12px;
+}
+.badge{
+  width:66px;height:66px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:34px;font-weight:1000;
+  background:linear-gradient(180deg,#1ab9ff,#0a83ef);
+}
+.sheet-title h1{font-size:34px;line-height:1;margin:0;font-weight:1000}
+.sheet-title p{margin:6px 0 0;color:#d6e6f4;font-size:16px}
+.chart-card{padding:18px 20px}
+.chart{
+  height:430px;
+  display:flex;
+  align-items:flex-end;
+  gap:24px;
+  padding:42px 30px 45px;
+  border-left:1px solid #507393;
+  border-bottom:1px solid #507393;
+  position:relative;
+}
+.bar-wrap{
+  flex:1;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  align-items:center;
+  gap:6px;
+  position:relative;
+}
+.bar{
+  width:66%;
+  min-width:52px;
+  border-radius:5px 5px 0 0;
+  background:linear-gradient(180deg,#35c1ff,#1688f0);
+  box-shadow:0 0 10px rgba(29,169,255,.3);
+}
+.bar.purple{background:linear-gradient(180deg,#c47bff,#9553dd)}
+.bar.green{background:linear-gradient(180deg,#7be67d,#49b95a)}
+.bar.orange{background:linear-gradient(180deg,#ffb45f,#ff8f24)}
+.bar.red{background:linear-gradient(180deg,#ff7b83,#ef5360)}
+.bar.turq{background:linear-gradient(180deg,#55e4df,#20bbb4)}
+.bar-value{font-size:18px;font-weight:1000}
+.bar-label{position:absolute;bottom:-30px;font-size:14px;font-weight:900;text-align:center}
+.goal-line{
+  position:absolute;
+  left:0;
+  right:0;
+  top:8px;
+  height:3px;
+  background:var(--yellow);
+  z-index:4;
+  box-shadow:0 0 8px rgba(255,214,10,.45);
+}
+.goal-line span{
+  position:absolute;
+  right:8px;
+  top:-24px;
+  color:var(--yellow);
+  font-weight:900;
+  font-size:13px;
+  background:#08223a;
+  padding:2px 6px;
+  border-radius:4px;
+}
+.two-col{display:grid;grid-template-columns:1.5fr 1fr;gap:12px}
+.table{
+  width:100%;
+  max-width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+  font-size:clamp(12px,1.05vw,18px);
+}
+.table th{
+  background:#124a75;
+  padding:10px 5px;
+  font-size:clamp(10px,.82vw,14px);
+  line-height:1.08;
+  border:1px solid #1c5278;
+  overflow-wrap:anywhere;
+}
+.table td{
+  padding:12px 6px;
+  border:1px solid #164361;
+  font-weight:800;
+  line-height:1.08;
+  overflow-wrap:anywhere;
+}
+.table .name{
+  font-size:clamp(13px,1.05vw,18px);
+  white-space:normal;
+}
+.rankbar{
+  height:18px;background:#163f5a;border-radius:4px;overflow:hidden
+}
+.rankbar > span{display:block;height:100%;background:linear-gradient(90deg,#24b8ff,#1688f0)}
+.rankbar.violet > span{background:linear-gradient(90deg,#cf8dff,#9864e9)}
+.manager-dot{
+  display:inline-block;
+  width:10px;
+  height:28px;
+  border-radius:5px;
+  margin-right:7px;
+  vertical-align:middle;
+}
+.c-agus{background:#2ed2ff}.c-dani{background:#b56cff}.c-german{background:#73e36e}
+.c-nahuel{background:#ff9f31}.c-fabricio{background:#ff6674}.c-virginia{background:#32d6d2}
+.origin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.origin-col{border-right:1px solid #174c70;padding:0 10px}
+.origin-col:last-child{border-right:none}
+.origin-col h3{text-align:center;font-size:18px}
+.origin-row{
+  display:grid;grid-template-columns:1.35fr 1fr 30px;gap:8px;align-items:center;margin:16px 0;font-size:15px;font-weight:900
+}
+.mini-track{height:22px;background:#16425f;border:1px solid #255e84;border-radius:3px;overflow:hidden}
+.mini-fill{height:100%;background:linear-gradient(90deg,#dae7f1,#c7d5e0)}
+.mini-fill.v{background:linear-gradient(90deg,#caa4ff,#a477e8)}
+.totals{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+  margin-top:20px;padding-top:14px;border-top:1px solid #27597a;text-align:center
+}
+.totals div{font-size:14px;font-weight:900}
+.totals strong{display:block;font-size:28px;margin-top:4px}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:12px 0 14px}
+.stat{
+  background:#0a2844;border:1px solid #1777b5;border-radius:10px;padding:12px;text-align:center
+}
+.stat .slabel{font-size:15px;font-weight:900;color:#d8e8f5}
+.stat .svalue{font-size:30px;font-weight:1000;margin-top:4px}
+.neg{color:#ff6877}.pos{color:#38e184}.cyan{color:#33d2ff}.warn{color:#ffb13c}
+.actionbar{
+  display:grid;grid-template-columns:1.1fr 1.25fr 1.1fr 1.1fr 1fr 1fr 1fr 1fr;gap:8px;margin-top:12px
+}
+.actionbar button{
+  height:48px;background:#0b2d4c;border:1px solid #1479b9;color:#fff;border-radius:8px;font-weight:900;font-size:12px
+}
+.small-note{font-size:11px;color:#bfd2e2;margin-top:8px}
+
+.manager-bar.agustina{background:linear-gradient(180deg,#52d8ff,#1597ef)}
+.manager-bar.daniela{background:linear-gradient(180deg,#ca86ff,#9851df)}
+.manager-bar.german{background:linear-gradient(180deg,#7be58d,#40b963)}
+.manager-bar.nahuel{background:linear-gradient(180deg,#ffbd6b,#ff8d1f)}
+.manager-bar.fabricio{background:linear-gradient(180deg,#ff8790,#f05261)}
+.manager-bar.virginia{background:linear-gradient(180deg,#67e4df,#1eb8b2)}
+.manager-fill.agustina{background:linear-gradient(90deg,#52d8ff,#1597ef)}
+.manager-fill.daniela{background:linear-gradient(90deg,#ca86ff,#9851df)}
+.manager-fill.german{background:linear-gradient(90deg,#7be58d,#40b963)}
+.manager-fill.nahuel{background:linear-gradient(90deg,#ffbd6b,#ff8d1f)}
+.manager-fill.fabricio{background:linear-gradient(90deg,#ff8790,#f05261)}
+.manager-fill.virginia{background:linear-gradient(90deg,#67e4df,#1eb8b2)}
+.legend{
+  display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center;
+  margin:0 0 12px; padding:10px 12px;
+  background:#071d32; border:1px solid #164c73; border-radius:9px;
+}
+.legend-item{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:900}
+.legend-swatch{width:14px;height:14px;border-radius:4px}
+
+/* Notebook / monitor responsive mode */
+@media (max-width:1600px){
+  .app{padding:8px 10px 10px}
+  .topbar{grid-template-columns:1.45fr .72fr .64fr .70fr .70fr;gap:7px}
+  .brand{padding:6px 8px;min-height:88px}
+  .brand .small{font-size:clamp(16px,1.4vw,22px)}
+  .brand .big{font-size:clamp(27px,2.7vw,39px)}
+  .brand .period{margin-top:6px;font-size:clamp(8px,.72vw,11px);white-space:nowrap}
+  .kpi{min-height:88px;padding:8px 9px;gap:7px;border-radius:9px}
+  .kpi .ico{font-size:24px;width:34px}
+  .kpi .label{font-size:clamp(9px,.8vw,12px)}
+  .kpi .value{font-size:clamp(24px,2vw,31px)}
+  .kpi .sub{font-size:clamp(8px,.65vw,10px)}
+  .nav{margin-top:7px;gap:6px}
+  .nav button{height:38px;font-size:clamp(10px,.8vw,13px);border-radius:6px}
+  .sheet{margin-top:8px;min-height:auto}
+  .card{padding:11px;border-radius:11px}
+  .sheet-title{gap:10px;margin-bottom:8px}
+  .badge{width:50px;height:50px;font-size:26px;border-radius:9px;flex:0 0 50px}
+  .sheet-title h1{font-size:clamp(22px,2vw,31px)}
+  .sheet-title p{font-size:clamp(10px,.95vw,14px);margin-top:3px}
+  .chart-card{padding:12px 14px}
+  .chart{height:330px;gap:15px;padding:34px 18px 35px}
+  .bar-value{font-size:clamp(12px,1vw,16px)}
+  .bar-label{bottom:-25px;font-size:clamp(10px,.9vw,13px)}
+  .two-col{gap:8px}
+  .origin-grid{gap:8px}
+  .origin-col{padding:0 6px}
+  .origin-col h3{font-size:clamp(12px,1.05vw,16px)}
+  .origin-row{grid-template-columns:1.35fr .9fr 24px;gap:5px;margin:10px 0;font-size:clamp(10px,.82vw,13px)}
+  .mini-track{height:17px}
+  .totals{margin-top:12px;padding-top:9px;gap:8px}
+  .totals div{font-size:clamp(9px,.78vw,12px)}
+  .totals strong{font-size:clamp(20px,1.8vw,26px)}
+  .stats{gap:7px;margin:8px 0 10px}
+  .stat{padding:8px}
+  .stat .slabel{font-size:clamp(9px,.85vw,13px)}
+  .stat .svalue{font-size:clamp(22px,2vw,28px)}
+  .actionbar{gap:5px;margin-top:8px}
+  .actionbar button{height:39px;font-size:clamp(8px,.67vw,10px);padding:3px}
+  .rankbar{height:14px}
+}
+
+/* Typical 15-inch notebooks: 1366–1536 px wide */
+@media (max-width:1450px){
+  .brand .period{font-size:8.5px}
+  .nav{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .table{font-size:11px}
+  .table th{padding:7px 3px;font-size:9px}
+  .table td{padding:8px 3px;font-size:10.5px}
+  .table .name{font-size:11px}
+  .manager-dot{width:7px;height:22px;margin-right:4px}
+  #sheet-7 .table th,#sheet-8 .table th{font-size:8px}
+  #sheet-7 .table td,#sheet-8 .table td{font-size:9.2px;padding:8px 2px}
+  #sheet-7 .table .name,#sheet-8 .table .name{font-size:10px}
+  #sheet-9 .table th{font-size:8.5px}
+  #sheet-9 .table td{font-size:9.5px;padding:7px 3px}
+}
+
+/* Small notebook window: remain inside the viewport instead of spilling sideways */
+@media (max-width:1200px){
+  .topbar{grid-template-columns:1.55fr repeat(4,.72fr)}
+  .brand .big{font-size:28px}
+  .nav button{height:34px}
+  .sheet-title h1{font-size:22px}
+  .chart{height:300px}
+  .table th{font-size:8px}
+  .table td{font-size:9px}
+  .actionbar{grid-template-columns:repeat(4,1fr)}
+}
+
+/* ===== CARGA MANUAL SIMPLE ===== */
+.simple-modal{
+  position:fixed;inset:0;background:rgba(0,0,0,.80);z-index:9999;
+  display:none;align-items:center;justify-content:center;padding:16px
+}
+.simple-modal.open{display:flex}
+.simple-box{
+  width:min(1180px,96vw);max-height:94vh;overflow:auto;
+  background:#071c31;border:2px solid #1496ff;border-radius:14px;padding:18px;
+  box-shadow:0 0 35px rgba(20,150,255,.28)
+}
+.simple-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.simple-head h2{margin:0;font-size:28px}
+.simple-close{border:0;background:#b92f3a;color:#fff;border-radius:7px;padding:9px 13px;font-weight:900;cursor:pointer}
+.simple-config{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.simple-field label{display:block;font-size:11px;font-weight:900;margin-bottom:5px;color:#cfe8ff}
+.simple-field input{
+  width:100%;background:#03111e;color:#fff;border:1px solid #2a6d9e;border-radius:7px;padding:9px;font-weight:800
+}
+.simple-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:12px}
+.simple-table th,.simple-table td{border:1px solid #285879;padding:6px;text-align:center}
+.simple-table th{background:#103b60;font-size:10px;line-height:1.1}
+.simple-table input{width:100%;min-width:0;background:#03111e;color:#fff;border:1px solid #2a6d9e;border-radius:5px;padding:7px;text-align:center}
+.simple-table input.name{text-align:left}
+.simple-total{font-weight:1000;color:#ffd60a}
+.simple-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
+.simple-actions button{border:0;border-radius:7px;padding:10px 15px;font-weight:900;cursor:pointer}
+.simple-save{background:#1496ff;color:#fff}.simple-clear{background:#8e2630;color:#fff}.simple-cancel{background:#425568;color:#fff}
+.simple-note{font-size:12px;color:#bdd5e7;margin:6px 0 12px}
+@media(max-width:1100px){.simple-config{grid-template-columns:repeat(2,1fr)}.simple-table{font-size:10px}.simple-table th{font-size:8px}}
+
+
+.updated-badge{
+  grid-column:1 / -1;
+  justify-self:end;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:4px;
+  padding:5px 9px;
+  border:1px solid #19c8ff;
+  border-radius:8px;
+  background:#0a2a46;
+  color:#fff;
+  font-size:12px;
+  font-weight:1000;
+  box-shadow:0 0 12px rgba(25,200,255,.18);
+}
+.updated-badge b{color:#19c8ff}
+
+
+/* ===== MODO INDEX ===== */
+body.index-view .actionbar{display:none!important}
+body.index-view{
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  align-items:flex-start!important;
+}
+body.index-view .app{
+  min-height:100vh!important;
+  height:auto!important;
+  overflow:visible!important;
+  padding-bottom:18px!important;
+}
+body.index-view .nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#061423;
+  padding:6px 0;
+}
+body.index-view .sheet{
+  min-height:calc(100vh - 180px);
+}
+
+
+/* ===== HISTORIAL EDITABLE ===== */
+.history-box{
+  margin-top:16px;padding-top:14px;border-top:1px solid #285879
+}
+.history-box h3{margin:0 0 8px;font-size:17px}
+.history-table{width:100%;border-collapse:collapse;table-layout:fixed}
+.history-table th,.history-table td{
+  border:1px solid #285879;padding:6px;text-align:center
+}
+.history-table th{background:#103b60;font-size:10px}
+.history-table input{
+  width:100%;background:#03111e;color:#fff;border:1px solid #2a6d9e;
+  border-radius:5px;padding:7px;text-align:center;font-weight:800
+}
+
+
+/* ===== HOJAS 7 Y 9 MISMA ESCALA QUE HOJA 8 ===== */
+#sheet-7,
+#sheet-9{
+  min-height:610px;
+}
+
+#sheet-7 .card,
+#sheet-9 .card{
+  padding:16px;
+}
+
+#sheet-7 .sheet-title,
+#sheet-9 .sheet-title{
+  gap:14px;
+  margin-bottom:12px;
+}
+
+#sheet-7 .badge,
+#sheet-9 .badge{
+  width:66px;
+  height:66px;
+  flex:0 0 66px;
+  font-size:34px;
+  border-radius:12px;
+}
+
+#sheet-7 .sheet-title h1,
+#sheet-9 .sheet-title h1{
+  font-size:34px;
+}
+
+#sheet-7 .sheet-title p,
+#sheet-9 .sheet-title p{
+  margin:6px 0 0;
+  font-size:16px;
+}
+
+#sheet-7 .legend,
+#sheet-9 .legend{
+  margin:0 0 12px;
+  padding:10px 12px;
+  gap:10px 16px;
+}
+
+#sheet-7 .legend-item,
+#sheet-9 .legend-item{
+  font-size:13px;
+}
+
+#sheet-7 .stats,
+#sheet-9 .stats{
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+  margin:12px 0 14px;
+}
+
+#sheet-7 .stat,
+#sheet-9 .stat{
+  padding:12px;
+  border-radius:10px;
+}
+
+#sheet-7 .stat .slabel,
+#sheet-9 .stat .slabel{
+  font-size:15px;
+}
+
+#sheet-7 .stat .svalue,
+#sheet-9 .stat .svalue{
+  font-size:30px;
+  margin-top:4px;
+}
+
+#sheet-7 .table,
+#sheet-9 .table{
+  width:100%;
+  max-width:100%;
+  table-layout:fixed;
+  font-size:clamp(12px,1.05vw,18px);
+}
+
+#sheet-7 .table th,
+#sheet-9 .table th{
+  padding:10px 5px;
+  font-size:clamp(10px,.82vw,14px);
+  line-height:1.08;
+}
+
+#sheet-7 .table td,
+#sheet-9 .table td{
+  padding:12px 6px;
+  font-size:inherit;
+  line-height:1.08;
+}
+
+#sheet-7 .table .name,
+#sheet-9 .table .name{
+  font-size:clamp(13px,1.05vw,18px);
+}
+
+#sheet-7 .manager-dot,
+#sheet-9 .manager-dot{
+  width:10px;
+  height:28px;
+  margin-right:7px;
+}
+
+#sheet-7 .small-note,
+#sheet-9 .small-note{
+  font-size:11px;
+  margin-top:8px;
+}
+
+/* Notebook / monitor: usar exactamente el mismo criterio que Hoja 8 */
+@media (max-width:1600px){
+  #sheet-7 .card,#sheet-9 .card{padding:11px}
+  #sheet-7 .sheet-title,#sheet-9 .sheet-title{gap:10px;margin-bottom:8px}
+  #sheet-7 .badge,#sheet-9 .badge{
+    width:50px;height:50px;flex:0 0 50px;font-size:26px;border-radius:9px
+  }
+  #sheet-7 .sheet-title h1,#sheet-9 .sheet-title h1{font-size:clamp(22px,2vw,31px)}
+  #sheet-7 .sheet-title p,#sheet-9 .sheet-title p{font-size:clamp(10px,.95vw,14px);margin-top:3px}
+  #sheet-7 .stats,#sheet-9 .stats{gap:7px;margin:8px 0 10px}
+  #sheet-7 .stat,#sheet-9 .stat{padding:8px}
+  #sheet-7 .stat .slabel,#sheet-9 .stat .slabel{font-size:clamp(9px,.85vw,13px)}
+  #sheet-7 .stat .svalue,#sheet-9 .stat .svalue{font-size:clamp(22px,2vw,28px)}
+}
+@media (max-width:1450px){
+  #sheet-7 .table,#sheet-9 .table{font-size:11px}
+  #sheet-7 .table th,#sheet-9 .table th{padding:7px 3px;font-size:9px}
+  #sheet-7 .table td,#sheet-9 .table td{padding:8px 3px;font-size:10.5px}
+  #sheet-7 .table .name,#sheet-9 .table .name{font-size:11px}
+  #sheet-7 .manager-dot,#sheet-9 .manager-dot{width:7px;height:22px;margin-right:4px}
+}
+@media (max-width:1200px){
+  #sheet-7 .sheet-title h1,#sheet-9 .sheet-title h1{font-size:22px}
+  #sheet-7 .table th,#sheet-9 .table th{font-size:8px}
+  #sheet-7 .table td,#sheet-9 .table td{font-size:9px}
+}
+
+
+/* TOTAL UF: solo hoja 6, encima de las barras */
+#sheet-6 .uf-total-general{
+  display:flex;align-items:baseline;justify-content:center;gap:12px;
+  margin:4px 0 10px;padding:9px 16px;
+  border:1px solid #1c5278;border-radius:9px;background:#0a2844;
+  font-weight:900;color:#d8e8f5;font-size:17px;
+}
+#sheet-6 .uf-total-general strong{color:#ffd60a;font-size:30px;line-height:1}
+
+/* Centrado de datos numericos en hojas 7, 8 y 9; mantener gestores a la izquierda */
+#sheet-7 .table th, #sheet-8 .table th, #sheet-9 .table th,
+#sheet-7 .table td, #sheet-8 .table td, #sheet-9 .table td {
+  text-align: center;
+  vertical-align: middle;
+}
+#sheet-7 .table td:first-child, #sheet-8 .table td:first-child,
+#sheet-9 .table td:first-child { text-align: left; }
+
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="updated-badge" id="updatedBadge"><b>ACTUALIZADO</b><span id="updatedText">DÍA 27/10/2026 · HORA 10:10:37 a. m.</span></div>
+  <div class="topbar">
+    <div class="brand">
+      <div class="small">INFORME GERENCIAL</div>
+      <div class="big">EDIFICIOS EN POZO</div>
+      <div class="period">PERÍODO: ABRIL · MAYO · JUNIO · JULIO · AGOSTO · SEPTIEMBRE CERRADOS · OCTUBRE EN CURSO 2026</div>
+    </div>
+    <div class="kpi"><div class="ico">🗓️</div><div><div class="label">DÍAS LABORABLES<br>MES</div><div class="value">21</div></div></div>
+    <div class="kpi"><div class="ico">✅</div><div><div class="label">TRABAJADOS</div><div class="value">18</div><div class="sub">Días trabajados Octubre</div></div></div>
+    <div class="kpi obj"><div class="ico">🎯</div><div><div class="label">OBJETIVO<br>PERMISOS</div><div class="value">285</div><div class="sub">Desde CONFIG</div></div></div>
+    <div class="kpi obj"><div class="ico">👥</div><div><div class="label">OBJETIVO<br>VISITAS</div><div class="value">1.260</div><div class="sub">Desde CONFIG</div></div></div>
+  </div>
+
+  <div class="nav" id="nav">
+    <button data-sheet="1" class="">HOJA 1</button>
+    <button data-sheet="2" class="">HOJA 2</button>
+    <button data-sheet="3" class="">HOJA 3</button>
+    <button data-sheet="4" class="">HOJA 4</button>
+    <button data-sheet="5" class="">HOJA 5</button>
+    <button data-sheet="6" class="">HOJA 6</button>
+    <button data-sheet="7" class="">HOJA 7</button>
+    <button data-sheet="8" class="">HOJA 8</button>
+    <button data-sheet="9" class="active">HOJA 9</button>
+  </div>
+
+  <section class="sheet" id="sheet-1">
+    <div class="card chart-card">
+      <div class="sheet-title"><div class="badge">01</div><div><h1>EVOLUCIÓN DE PERMISOS</h1><p>Permisos mensuales, objetivo y proyección.</p></div></div>
+      <div class="chart">
+        <div class="goal-line"><span>OBJETIVO 285</span></div>
+        
+        
+        
+        
+        
+        
+        
+      <div class="bar-wrap"><div class="bar-value">17</div><div class="bar" style="height:5.964912280701754%"></div><div class="bar-label">ABR</div></div><div class="bar-wrap"><div class="bar-value">126</div><div class="bar" style="height:44.21052631578947%"></div><div class="bar-label">MAY</div></div><div class="bar-wrap"><div class="bar-value">187</div><div class="bar" style="height:65.6140350877193%"></div><div class="bar-label">JUN</div></div><div class="bar-wrap"><div class="bar-value">176</div><div class="bar" style="height:61.75438596491228%"></div><div class="bar-label">JUL</div></div><div class="bar-wrap"><div class="bar-value">213</div><div class="bar" style="height:74.73684210526315%"></div><div class="bar-label">AGO</div></div><div class="bar-wrap"><div class="bar-value">179</div><div class="bar" style="height:62.807017543859644%"></div><div class="bar-label">SEP</div></div><div class="bar-wrap"><div class="bar-value">200</div><div class="bar" style="height:70.17543859649122%"></div><div class="bar-label">OCT<br>ACTUAL</div></div><div class="bar-wrap"><div class="bar-value">233</div><div class="bar green" style="height:81.75438596491227%"></div><div class="bar-label">OCT<br>PROYECCIÓN</div></div></div>
+    </div>
+  </section>
+
+  <section class="sheet" id="sheet-2">
+    <div class="card chart-card">
+      <div class="sheet-title"><div class="badge">02</div><div><h1>EVOLUCIÓN DE VISITAS</h1><p>Visitas mensuales, objetivo y proyección.</p></div></div>
+      <div class="chart">
+        <div class="goal-line"><span>OBJETIVO 1.260</span></div>
+        
+        
+        
+        
+        
+        
+        
+      <div class="bar-wrap"><div class="bar-value">953</div><div class="bar purple" style="height:73.25134511913912%"></div><div class="bar-label">ABR</div></div><div class="bar-wrap"><div class="bar-value">1.128</div><div class="bar purple" style="height:86.70253651037663%"></div><div class="bar-label">MAY</div></div><div class="bar-wrap"><div class="bar-value">1.264</div><div class="bar purple" style="height:97.15603382013836%"></div><div class="bar-label">JUN</div></div><div class="bar-wrap"><div class="bar-value">807</div><div class="bar purple" style="height:62.02920830130668%"></div><div class="bar-label">JUL</div></div><div class="bar-wrap"><div class="bar-value">1.301</div><div class="bar purple" style="height:100%"></div><div class="bar-label">AGO</div></div><div class="bar-wrap"><div class="bar-value">858</div><div class="bar purple" style="height:65.94926979246733%"></div><div class="bar-label">SEP</div></div><div class="bar-wrap"><div class="bar-value">1.072</div><div class="bar purple" style="height:82.39815526518063%"></div><div class="bar-label">OCT<br>ACTUAL</div></div><div class="bar-wrap"><div class="bar-value">1.251</div><div class="bar turq" style="height:96.15680245964643%"></div><div class="bar-label">OCT<br>PROYECCIÓN</div></div></div>
+    </div>
+  </section>
+
+  <section class="sheet" id="sheet-3">
+    <div class="two-col">
+      <div class="card">
+        <div class="sheet-title"><div class="badge">03</div><div><h1 style="font-size:28px">RANKING DE PERMISOS</h1><p>Acumulado mensual por gestor.</p></div></div>
+        <table class="table">
+          <thead><tr><th>GESTOR</th><th>PERMISOS</th><th>%</th><th>BARRA</th></tr></thead>
+          <tbody><tr><td class="name"><span class="manager-dot c-agus"></span>Agustina Castillo</td><td>49</td><td>24,5%</td><td><div class="rankbar"><span class="manager-fill agustina" style="width:100%"></span></div></td></tr><tr><td class="name"><span class="manager-dot c-nahuel"></span>Nahuel Olmos</td><td>47</td><td>23,5%</td><td><div class="rankbar"><span class="manager-fill nahuel" style="width:95.91836734693877%"></span></div></td></tr><tr><td class="name"><span class="manager-dot c-dani"></span>Daniela Orjes</td><td>45</td><td>22,5%</td><td><div class="rankbar"><span class="manager-fill daniela" style="width:91.83673469387756%"></span></div></td></tr><tr><td class="name"><span class="manager-dot c-german"></span>Germán Portela</td><td>27</td><td>13,5%</td><td><div class="rankbar"><span class="manager-fill german" style="width:55.10204081632652%"></span></div></td></tr><tr><td class="name"><span class="manager-dot c-fabricio"></span>Fabricio Ojeda</td><td>23</td><td>11,5%</td><td><div class="rankbar"><span class="manager-fill fabricio" style="width:46.93877551020408%"></span></div></td></tr><tr><td class="name"><span class="manager-dot c-virginia"></span>Virginia Albamonte</td><td>9</td><td>4,5%</td><td><div class="rankbar"><span class="manager-fill virginia" style="width:18.367346938775512%"></span></div></td></tr></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="sheet-title"><div><h1 style="font-size:28px">PPD POR GESTOR</h1><p>Permisos por día.</p></div></div>
+        <table class="table">
+          <thead><tr><th>GESTOR</th><th>PPD</th><th>BARRA</th></tr></thead>
+          <tbody><tr><td>Agustina Castillo</td><td>2,72</td><td><div class="rankbar"><span class="manager-fill agustina" style="width:100%"></span></div></td></tr><tr><td>Nahuel Olmos</td><td>2,61</td><td><div class="rankbar"><span class="manager-fill nahuel" style="width:95.91836734693877%"></span></div></td></tr><tr><td>Daniela Orjes</td><td>2,50</td><td><div class="rankbar"><span class="manager-fill daniela" style="width:91.83673469387756%"></span></div></td></tr><tr><td>Germán Portela</td><td>1,50</td><td><div class="rankbar"><span class="manager-fill german" style="width:55.10204081632652%"></span></div></td></tr><tr><td>Fabricio Ojeda</td><td>1,28</td><td><div class="rankbar"><span class="manager-fill fabricio" style="width:46.93877551020408%"></span></div></td></tr><tr><td>Virginia Albamonte</td><td>0,50</td><td><div class="rankbar"><span class="manager-fill virginia" style="width:18.36734693877551%"></span></div></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet" id="sheet-4">
+    <div class="card">
+      <div class="sheet-title"><div class="badge">04</div><div><h1>RANKING DE VISITAS</h1><p>Visitas acumuladas por gestor.</p></div></div>
+      <div class="legend">
+        <div class="legend-item"><span class="legend-swatch c-agus"></span>Agustina</div>
+        <div class="legend-item"><span class="legend-swatch c-dani"></span>Daniela</div>
+        <div class="legend-item"><span class="legend-swatch c-german"></span>Germán</div>
+        <div class="legend-item"><span class="legend-swatch c-nahuel"></span>Nahuel</div>
+        <div class="legend-item"><span class="legend-swatch c-fabricio"></span>Fabricio</div>
+        <div class="legend-item"><span class="legend-swatch c-virginia"></span>Virginia</div>
+      </div>
+      <table class="table">
+        <thead><tr><th>GESTOR</th><th>VISITAS</th><th>%</th><th>BARRA</th></tr></thead>
+        <tbody><tr><td class="name"><span class="manager-dot c-nahuel"></span>Nahuel Olmos</td><td>205</td><td>19,1%</td><td><div class="rankbar"><span class="manager-fill nahuel" style="width:100%"></span></div></td></tr><tr><td class="name"><span class="manager-dot c-dani"></span>Daniela Orjes</td><td>202</td><td>18,8%</td><td><div class="rankbar"><span class="manager-fill daniela" style="width:98.53658536585365%"></span></div></td></tr><tr><td class="name"><span class="manager-dot c-virginia"></span>Virginia Albamonte</td><td>184</td><td>17,2%</td><td><div class="rankbar"><span class="manager-fill virginia" style="width:89.75609756097562%"></span></div></td></tr><tr><td class="name"><span class="manager-dot c-fabricio"></span>Fabricio Ojeda</td><td>183</td><td>17,1%</td><td><div class="rankbar"><span class="manager-fill fabricio" style="width:89.26829268292683%"></span></div></td></tr><tr><td class="name"><span class="manager-dot c-agus"></span>Agustina Castillo</td><td>150</td><td>14,0%</td><td><div class="rankbar"><span class="manager-fill agustina" style="width:73.17073170731707%"></span></div></td></tr><tr><td class="name"><span class="manager-dot c-german"></span>Germán Portela</td><td>148</td><td>13,8%</td><td><div class="rankbar"><span class="manager-fill german" style="width:72.1951219512195%"></span></div></td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="sheet" id="sheet-5">
+    <div class="card">
+      <div class="sheet-title"><div class="badge">05</div><div><h1>ORIGEN DE PERMISOS</h1><p>Permisos por incidencias, obrador y regularización de documentación.</p></div></div>
+      <div class="origin-grid">
+        <div class="origin-col"><h3>PERMISOS POR INCIDENCIAS</h3><div class="origin-row"><span>Agustina Castillo</span><div class="mini-track"><div class="mini-fill " style="width:100%"></div></div><b>31</b></div><div class="origin-row"><span>Daniela Orjes</span><div class="mini-track"><div class="mini-fill " style="width:100%"></div></div><b>31</b></div><div class="origin-row"><span>Germán Portela</span><div class="mini-track"><div class="mini-fill " style="width:38.70967741935484%"></div></div><b>12</b></div><div class="origin-row"><span>Nahuel Olmos</span><div class="mini-track"><div class="mini-fill " style="width:83.87096774193549%"></div></div><b>26</b></div><div class="origin-row"><span>Fabricio Ojeda</span><div class="mini-track"><div class="mini-fill " style="width:51.61290322580645%"></div></div><b>16</b></div><div class="origin-row"><span>Virginia Albamonte</span><div class="mini-track"><div class="mini-fill " style="width:3.225806451612903%"></div></div><b>1</b></div></div>
+        <div class="origin-col"><h3>PERMISOS OBRADOR</h3><div class="origin-row"><span>Agustina Castillo</span><div class="mini-track"><div class="mini-fill v" style="width:85%"></div></div><b>17</b></div><div class="origin-row"><span>Daniela Orjes</span><div class="mini-track"><div class="mini-fill v" style="width:65%"></div></div><b>13</b></div><div class="origin-row"><span>Germán Portela</span><div class="mini-track"><div class="mini-fill v" style="width:70%"></div></div><b>14</b></div><div class="origin-row"><span>Nahuel Olmos</span><div class="mini-track"><div class="mini-fill v" style="width:100%"></div></div><b>20</b></div><div class="origin-row"><span>Fabricio Ojeda</span><div class="mini-track"><div class="mini-fill v" style="width:30%"></div></div><b>6</b></div><div class="origin-row"><span>Virginia Albamonte</span><div class="mini-track"><div class="mini-fill v" style="width:40%"></div></div><b>8</b></div></div>
+        <div class="origin-col"><h3>REGULARIZACIÓN DOCUMENTACIÓN</h3><div class="origin-row"><span>Agustina Castillo</span><div class="mini-track"><div class="mini-fill " style="width:100%"></div></div><b>1</b></div><div class="origin-row"><span>Daniela Orjes</span><div class="mini-track"><div class="mini-fill " style="width:100%"></div></div><b>1</b></div><div class="origin-row"><span>Germán Portela</span><div class="mini-track"><div class="mini-fill " style="width:100%"></div></div><b>1</b></div><div class="origin-row"><span>Nahuel Olmos</span><div class="mini-track"><div class="mini-fill " style="width:100%"></div></div><b>1</b></div><div class="origin-row"><span>Fabricio Ojeda</span><div class="mini-track"><div class="mini-fill " style="width:100%"></div></div><b>1</b></div><div class="origin-row"><span>Virginia Albamonte</span><div class="mini-track"><div class="mini-fill " style="width:0%"></div></div><b>0</b></div></div>
+      </div>
+      <div class="totals">
+        <div>TOTAL INCIDENCIAS<strong>117</strong></div>
+        <div>TOTAL OBRADOR<strong>78</strong></div>
+        <div>TOTAL REGULARIZACIÓN<strong>5</strong></div>
+        <div>TOTAL GENERAL<strong>200</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet" id="sheet-6">
+    <div class="card chart-card">
+      <div class="sheet-title"><div class="badge">06</div><div><h1>UF POR GESTOR</h1><p>Unidades funcionales gestionadas por ejecutivo.</p></div></div>
+      <div class="legend">
+        <div class="legend-item"><span class="legend-swatch c-agus"></span>Agustina</div>
+        <div class="legend-item"><span class="legend-swatch c-dani"></span>Daniela</div>
+        <div class="legend-item"><span class="legend-swatch c-german"></span>Germán</div>
+        <div class="legend-item"><span class="legend-swatch c-nahuel"></span>Nahuel</div>
+        <div class="legend-item"><span class="legend-swatch c-fabricio"></span>Fabricio</div>
+        <div class="legend-item"><span class="legend-swatch c-virginia"></span>Virginia</div>
+      </div>
+      <div class="uf-total-general" aria-live="polite">TOTAL UF DE LOS GESTORES <strong id="sheet6TotalUF">3.019</strong></div>
+      <div class="chart" id="sheet6Chart"><div class="bar-wrap"><div class="bar-value">893</div><div class="bar manager-bar agustina" style="height:100%"></div><div class="bar-label">Agustina<br>Castillo</div></div><div class="bar-wrap"><div class="bar-value">700</div><div class="bar manager-bar daniela" style="height:78.38745800671893%"></div><div class="bar-label">Daniela<br>Orjes</div></div><div class="bar-wrap"><div class="bar-value">467</div><div class="bar manager-bar german" style="height:52.2956326987682%"></div><div class="bar-label">Germán<br>Portela</div></div><div class="bar-wrap"><div class="bar-value">520</div><div class="bar manager-bar nahuel" style="height:58.23068309070548%"></div><div class="bar-label">Nahuel<br>Olmos</div></div><div class="bar-wrap"><div class="bar-value">304</div><div class="bar manager-bar fabricio" style="height:34.04255319148936%"></div><div class="bar-label">Fabricio<br>Ojeda</div></div><div class="bar-wrap"><div class="bar-value">135</div><div class="bar manager-bar virginia" style="height:15.11758118701008%"></div><div class="bar-label">Virginia<br>Albamonte</div></div></div>
+    </div>
+  </section>
+
+  <section class="sheet" id="sheet-7">
+    <div class="card">
+      <div class="sheet-title">
+        <div class="badge">07</div>
+        <div>
+          <h1>PRODUCTIVIDAD DE PERMISOS</h1>
+          <p>Exclusivamente permisos: ritmo diario, proyección y alcance de objetivos.</p>
+        </div>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><span class="legend-swatch c-agus"></span>Agustina</div>
+        <div class="legend-item"><span class="legend-swatch c-dani"></span>Daniela</div>
+        <div class="legend-item"><span class="legend-swatch c-german"></span>Germán</div>
+        <div class="legend-item"><span class="legend-swatch c-nahuel"></span>Nahuel</div>
+        <div class="legend-item"><span class="legend-swatch c-fabricio"></span>Fabricio</div>
+        <div class="legend-item"><span class="legend-swatch c-virginia"></span>Virginia</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="slabel">GESTORES</div><div class="svalue">6</div></div>
+        <div class="stat"><div class="slabel">DÍAS TRABAJADOS</div><div class="svalue">18</div></div>
+        <div class="stat"><div class="slabel">DÍAS LABORABLES</div><div class="svalue">21</div></div>
+        <div class="stat"><div class="slabel">DÍAS RESTANTES</div><div class="svalue">3</div></div>
+        <div class="stat"><div class="slabel">PPD PROMEDIO</div><div class="svalue">1,85</div></div>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>GESTOR</th>
+            <th>PERMISOS</th>
+            <th>PERM./DÍA</th>
+            <th>PROY. 21 DÍAS</th>
+            <th>OBJ. 2/DÍA</th>
+            <th>FALTAN 2/DÍA</th>
+            <th>POSIB. 2/DÍA</th>
+            <th>OBJ. 3/DÍA</th>
+            <th>FALTAN 3/DÍA</th>
+            <th>POSIB. 3/DÍA</th>
+          </tr>
+        </thead>
+        <tbody><tr><td class="name"><span class="manager-dot c-agus"></span>Agustina Castillo</td><td>49</td><td>2,72</td><td>57,17</td><td>42</td><td class="pos">0</td><td class="pos">100,0%</td><td>63</td><td class="neg">14</td><td class="neg">-41,7%</td></tr><tr><td class="name"><span class="manager-dot c-dani"></span>Daniela Orjes</td><td>45</td><td>2,50</td><td>52,50</td><td>42</td><td class="pos">0</td><td class="pos">100,0%</td><td>63</td><td class="neg">18</td><td class="neg">-58,3%</td></tr><tr><td class="name"><span class="manager-dot c-german"></span>Germán Portela</td><td>27</td><td>1,50</td><td>31,50</td><td>42</td><td class="neg">15</td><td class="neg">-70,0%</td><td>63</td><td class="neg">36</td><td class="neg">-87,5%</td></tr><tr><td class="name"><span class="manager-dot c-nahuel"></span>Nahuel Olmos</td><td>47</td><td>2,61</td><td>54,83</td><td>42</td><td class="pos">0</td><td class="pos">100,0%</td><td>63</td><td class="neg">16</td><td class="neg">-51,0%</td></tr><tr><td class="name"><span class="manager-dot c-fabricio"></span>Fabricio Ojeda</td><td>23</td><td>1,28</td><td>26,83</td><td>42</td><td class="neg">19</td><td class="neg">-79,8%</td><td>63</td><td class="neg">40</td><td class="neg">-90,4%</td></tr><tr><td class="name"><span class="manager-dot c-virginia"></span>Virginia Albamonte</td><td>9</td><td>0,50</td><td>10,50</td><td>42</td><td class="neg">33</td><td class="neg">-95,5%</td><td>63</td><td class="neg">54</td><td class="neg">-97,2%</td></tr></tbody>
+      </table>
+
+      <div class="small-note">Hoja 7: solo métricas de PERMISOS. No incluye visitas ni conversión.</div>
+    </div>
+  </section>
+
+  <section class="sheet" id="sheet-8">
+    <div class="card">
+      <div class="sheet-title">
+        <div class="badge">08</div>
+        <div>
+          <h1>PRODUCTIVIDAD DE VISITAS</h1>
+          <p>Exclusivamente visitas: ritmo diario, proyección y alcance del objetivo mensual.</p>
+        </div>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><span class="legend-swatch c-agus"></span>Agustina</div>
+        <div class="legend-item"><span class="legend-swatch c-dani"></span>Daniela</div>
+        <div class="legend-item"><span class="legend-swatch c-german"></span>Germán</div>
+        <div class="legend-item"><span class="legend-swatch c-nahuel"></span>Nahuel</div>
+        <div class="legend-item"><span class="legend-swatch c-fabricio"></span>Fabricio</div>
+        <div class="legend-item"><span class="legend-swatch c-virginia"></span>Virginia</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="slabel">GESTORES</div><div class="svalue">6</div></div>
+        <div class="stat"><div class="slabel">DÍAS TRABAJADOS</div><div class="svalue">18</div></div>
+        <div class="stat"><div class="slabel">DÍAS LABORABLES</div><div class="svalue">21</div></div>
+        <div class="stat"><div class="slabel">DÍAS RESTANTES</div><div class="svalue">3</div></div>
+        <div class="stat"><div class="slabel">OBJETIVO VISITAS</div><div class="svalue">1.260</div></div>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>GESTOR</th>
+            <th>VISITAS</th>
+            <th>VIS./DÍA</th>
+            <th>PROY. 21 DÍAS</th>
+            <th>OBJETIVO MES</th>
+            <th>FALTAN</th>
+            <th>% ALCANCE</th>
+            <th>RITMO NECESARIO/DÍA</th>
+          </tr>
+        </thead>
+        <tbody><tr><td class="name"><span class="manager-dot c-agus"></span>Agustina Castillo</td><td>150</td><td>8,33</td><td>175</td><td>210</td><td>60</td><td class="neg">71,4%</td><td class="neg">20,00</td></tr><tr><td class="name"><span class="manager-dot c-dani"></span>Daniela Orjes</td><td>202</td><td>11,22</td><td>236</td><td>210</td><td>8</td><td class="warn">96,2%</td><td class="warn">2,67</td></tr><tr><td class="name"><span class="manager-dot c-german"></span>Germán Portela</td><td>148</td><td>8,22</td><td>173</td><td>210</td><td>62</td><td class="neg">70,5%</td><td class="neg">20,67</td></tr><tr><td class="name"><span class="manager-dot c-nahuel"></span>Nahuel Olmos</td><td>205</td><td>11,39</td><td>239</td><td>210</td><td>5</td><td class="warn">97,6%</td><td class="warn">1,67</td></tr><tr><td class="name"><span class="manager-dot c-fabricio"></span>Fabricio Ojeda</td><td>183</td><td>10,17</td><td>214</td><td>210</td><td>27</td><td class="warn">87,1%</td><td class="warn">9,00</td></tr><tr><td class="name"><span class="manager-dot c-virginia"></span>Virginia Albamonte</td><td>184</td><td>10,22</td><td>215</td><td>210</td><td>26</td><td class="warn">87,6%</td><td class="warn">8,67</td></tr></tbody>
+      </table>
+
+      <div class="small-note">Hoja 8: solo métricas de VISITAS. No incluye permisos ni conversión.</div>
+    </div>
+  </section>
+
+  <section class="sheet active" id="sheet-9">
+    <div class="card">
+      <div class="sheet-title"><div class="badge">09</div><div><h1>AVANCES · GESTIONES · ID</h1><p>Resumen operativo por gestor.</p></div></div>
+      <div class="stats">
+        <div class="stat"><div class="slabel">GESTORES</div><div class="svalue">6</div></div>
+        <div class="stat"><div class="slabel">VISITAS</div><div class="svalue">1072</div></div>
+        <div class="stat"><div class="slabel">PERMISOS</div><div class="svalue">200</div></div>
+        <div class="stat"><div class="slabel">CONVERSIÓN</div><div class="svalue">18,7%</div></div>
+        <div class="stat"><div class="slabel">ACTUALIZADO HOY</div><div class="svalue" style="font-size:20px">DÍA 27/10/2026 · HORA 10:10:37 a. m.</div></div>
+      </div>
+      <table class="table">
+        <thead><tr><th>GESTOR</th><th>VISITAS</th><th>PERMISOS</th><th>OBRADOR</th><th>INCIDENCIAS</th><th>REGULARIZACIÓN</th><th>CONVERSIÓN</th><th>PERM./DÍA</th><th>VIS./DÍA</th><th>ÚLTIMA ACTUALIZACIÓN</th></tr></thead>
+        <tbody><tr><td class="name"><span class="manager-dot c-agus"></span>Agustina Castillo</td><td>150</td><td>49</td><td class="cyan">17</td><td class="neg">31</td><td class="warn">1</td><td>32,7%</td><td>2,72</td><td>8,33</td><td>DÍA 27/10/2026 · HORA 10:10:37 a. m.</td></tr><tr><td class="name"><span class="manager-dot c-dani"></span>Daniela Orjes</td><td>202</td><td>45</td><td class="cyan">13</td><td class="neg">31</td><td class="warn">1</td><td>22,3%</td><td>2,50</td><td>11,22</td><td>DÍA 27/10/2026 · HORA 10:10:37 a. m.</td></tr><tr><td class="name"><span class="manager-dot c-german"></span>Germán Portela</td><td>148</td><td>27</td><td class="cyan">14</td><td class="neg">12</td><td class="warn">1</td><td>18,2%</td><td>1,50</td><td>8,22</td><td>DÍA 27/10/2026 · HORA 10:10:37 a. m.</td></tr><tr><td class="name"><span class="manager-dot c-nahuel"></span>Nahuel Olmos</td><td>205</td><td>47</td><td class="cyan">20</td><td class="neg">26</td><td class="warn">1</td><td>22,9%</td><td>2,61</td><td>11,39</td><td>DÍA 27/10/2026 · HORA 10:10:37 a. m.</td></tr><tr><td class="name"><span class="manager-dot c-fabricio"></span>Fabricio Ojeda</td><td>183</td><td>23</td><td class="cyan">6</td><td class="neg">16</td><td class="warn">1</td><td>12,6%</td><td>1,28</td><td>10,17</td><td>DÍA 27/10/2026 · HORA 10:10:37 a. m.</td></tr><tr><td class="name"><span class="manager-dot c-virginia"></span>Virginia Albamonte</td><td>184</td><td>9</td><td class="cyan">8</td><td class="neg">1</td><td class="warn">0</td><td>4,9%</td><td>0,50</td><td>10,22</td><td>DÍA 27/10/2026 · HORA 10:10:37 a. m.</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  
+  <div class="actionbar">
+    <button onclick="openSimpleManual()">📝 CARGA MANUAL</button>
+    <button onclick="tryRefresh()">🔄 ACTUALIZAR DESDE SHEET</button>
+    <button onclick="demoAction('Guardar semana')">💾 GUARDAR SEMANA</button>
+    <button onclick="openSimpleManual()">🕘 HISTORIAL</button>
+    <button onclick="demoAction('Info. Sheet')">📌 INFO. SHEET</button>
+    <button onclick="toggleTV()">📺 MODO TV</button>
+    <button onclick="downloadCurrentHtml()">⬇ BAJAR INDEX</button>
+    <button onclick="clearSimpleManual()">🧹 LIMPIAR DATOS</button>
+  </div>
+
+</div>
+
+
+<div class="simple-modal" id="simpleModal">
+  <div class="simple-box">
+    <div class="simple-head">
+      <h2>📝 CARGA MANUAL</h2>
+      <button class="simple-close" onclick="closeSimpleManual()">CERRAR</button>
+    </div>
+
+    <div class="simple-note">
+      Cargá visitas, permisos por origen y UF. Los permisos totales y las hojas del tablero se recalculan automáticamente.
+    </div>
+
+    <div class="simple-config">
+      <div class="simple-field">
+        <label>DÍAS TRABAJADOS</label>
+        <input id="smWorked" type="number" min="1">
+      </div>
+      <div class="simple-field">
+        <label>DÍAS LABORABLES</label>
+        <input id="smLab" type="number" min="1">
+      </div>
+      <div class="simple-field">
+        <label>OBJETIVO PERMISOS</label>
+        <input id="smObjPerm" type="number" min="0">
+      </div>
+      <div class="simple-field">
+        <label>OBJETIVO VISITAS</label>
+        <input id="smObjVis" type="number" min="0">
+      </div>
+    </div>
+
+    <table class="simple-table">
+      <thead>
+        <tr>
+          <th>GESTOR</th>
+          <th>VISITAS</th>
+          <th>POZO / OBRADOR</th>
+          <th>INCIDENCIA</th>
+          <th>REGULARIZACIÓN</th>
+          <th>UF</th>
+          <th>PERMISOS TOTALES</th>
+        </tr>
+      </thead>
+      <tbody id="simpleBody"><tr>
+      <td><input class="name" readonly="" value="Agustina Castillo"></td>
+      <td><input data-i="0" data-k="visitas" type="number" min="0" value="161" oninput="updateSimpleTotal(0)"></td>
+      <td><input data-i="0" data-k="pozo" type="number" min="0" value="17" oninput="updateSimpleTotal(0)"></td>
+      <td><input data-i="0" data-k="inc" type="number" min="0" value="31" oninput="updateSimpleTotal(0)"></td>
+      <td><input data-i="0" data-k="reg" type="number" min="0" value="1" oninput="updateSimpleTotal(0)"></td>
+      <td><input data-i="0" data-k="uf" type="number" min="0" value="893"></td>
+      <td class="simple-total" id="simpleTotal0">49</td>
+    </tr><tr>
+      <td><input class="name" readonly="" value="Daniela Orjes"></td>
+      <td><input data-i="1" data-k="visitas" type="number" min="0" value="188" oninput="updateSimpleTotal(1)"></td>
+      <td><input data-i="1" data-k="pozo" type="number" min="0" value="13" oninput="updateSimpleTotal(1)"></td>
+      <td><input data-i="1" data-k="inc" type="number" min="0" value="28" oninput="updateSimpleTotal(1)"></td>
+      <td><input data-i="1" data-k="reg" type="number" min="0" value="1" oninput="updateSimpleTotal(1)"></td>
+      <td><input data-i="1" data-k="uf" type="number" min="0" value="722"></td>
+      <td class="simple-total" id="simpleTotal1">42</td>
+    </tr><tr>
+      <td><input class="name" readonly="" value="Germán Portela"></td>
+      <td><input data-i="2" data-k="visitas" type="number" min="0" value="163" oninput="updateSimpleTotal(2)"></td>
+      <td><input data-i="2" data-k="pozo" type="number" min="0" value="14" oninput="updateSimpleTotal(2)"></td>
+      <td><input data-i="2" data-k="inc" type="number" min="0" value="12" oninput="updateSimpleTotal(2)"></td>
+      <td><input data-i="2" data-k="reg" type="number" min="0" value="3" oninput="updateSimpleTotal(2)"></td>
+      <td><input data-i="2" data-k="uf" type="number" min="0" value="467"></td>
+      <td class="simple-total" id="simpleTotal2">29</td>
+    </tr><tr>
+      <td><input class="name" readonly="" value="Nahuel Olmos"></td>
+      <td><input data-i="3" data-k="visitas" type="number" min="0" value="177" oninput="updateSimpleTotal(3)"></td>
+      <td><input data-i="3" data-k="pozo" type="number" min="0" value="17" oninput="updateSimpleTotal(3)"></td>
+      <td><input data-i="3" data-k="inc" type="number" min="0" value="23" oninput="updateSimpleTotal(3)"></td>
+      <td><input data-i="3" data-k="reg" type="number" min="0" value="1" oninput="updateSimpleTotal(3)"></td>
+      <td><input data-i="3" data-k="uf" type="number" min="0" value="520"></td>
+      <td class="simple-total" id="simpleTotal3">41</td>
+    </tr><tr>
+      <td><input class="name" readonly="" value="Fabricio Ojeda"></td>
+      <td><input data-i="4" data-k="visitas" type="number" min="0" value="173" oninput="updateSimpleTotal(4)"></td>
+      <td><input data-i="4" data-k="pozo" type="number" min="0" value="6" oninput="updateSimpleTotal(4)"></td>
+      <td><input data-i="4" data-k="inc" type="number" min="0" value="15" oninput="updateSimpleTotal(4)"></td>
+      <td><input data-i="4" data-k="reg" type="number" min="0" value="1" oninput="updateSimpleTotal(4)"></td>
+      <td><input data-i="4" data-k="uf" type="number" min="0" value="304"></td>
+      <td class="simple-total" id="simpleTotal4">22</td>
+    </tr><tr>
+      <td><input class="name" readonly="" value="Virginia Albamonte"></td>
+      <td><input data-i="5" data-k="visitas" type="number" min="0" value="154" oninput="updateSimpleTotal(5)"></td>
+      <td><input data-i="5" data-k="pozo" type="number" min="0" value="8" oninput="updateSimpleTotal(5)"></td>
+      <td><input data-i="5" data-k="inc" type="number" min="0" value="1" oninput="updateSimpleTotal(5)"></td>
+      <td><input data-i="5" data-k="reg" type="number" min="0" value="0" oninput="updateSimpleTotal(5)"></td>
+      <td><input data-i="5" data-k="uf" type="number" min="0" value="135"></td>
+      <td class="simple-total" id="simpleTotal5">9</td>
+    </tr></tbody>
+    </table>
+
+    <div class="history-box">
+      <h3>🕘 HISTORIAL MENSUAL</h3>
+      <div class="simple-note">
+        Podés modificar los meses cerrados. Estos valores alimentan las Hojas 1 y 2.
+      </div>
+      <table class="history-table">
+        <thead>
+          <tr><th>MES</th><th>PERMISOS</th><th>VISITAS</th></tr>
+        </thead>
+        <tbody id="historyBody"><tr>
+    <td><input data-hi="0" data-hk="mes" value="ABR"></td>
+    <td><input data-hi="0" data-hk="permisos" type="number" min="0" value="17"></td>
+    <td><input data-hi="0" data-hk="visitas" type="number" min="0" value="953"></td>
+  </tr><tr>
+    <td><input data-hi="1" data-hk="mes" value="MAY"></td>
+    <td><input data-hi="1" data-hk="permisos" type="number" min="0" value="126"></td>
+    <td><input data-hi="1" data-hk="visitas" type="number" min="0" value="1128"></td>
+  </tr><tr>
+    <td><input data-hi="2" data-hk="mes" value="JUN"></td>
+    <td><input data-hi="2" data-hk="permisos" type="number" min="0" value="187"></td>
+    <td><input data-hi="2" data-hk="visitas" type="number" min="0" value="1264"></td>
+  </tr><tr>
+    <td><input data-hi="3" data-hk="mes" value="JUL"></td>
+    <td><input data-hi="3" data-hk="permisos" type="number" min="0" value="176"></td>
+    <td><input data-hi="3" data-hk="visitas" type="number" min="0" value="807"></td>
+  </tr><tr>
+    <td><input data-hi="4" data-hk="mes" value="AGO"></td>
+    <td><input data-hi="4" data-hk="permisos" type="number" min="0" value="213"></td>
+    <td><input data-hi="4" data-hk="visitas" type="number" min="0" value="1301"></td>
+  </tr><tr>
+    <td><input data-hi="5" data-hk="mes" value="SEP"></td>
+    <td><input data-hi="5" data-hk="permisos" type="number" min="0" value="179"></td>
+    <td><input data-hi="5" data-hk="visitas" type="number" min="0" value="858"></td>
+  </tr></tbody>
+      </table>
+    </div>
+
+    <div class="simple-actions">
+      <button class="simple-cancel" onclick="closeSimpleManual()">CANCELAR</button>
+      <button class="simple-clear" onclick="clearSimpleManual()">LIMPIAR</button>
+      <button class="simple-save" onclick="saveSimpleManual()">GUARDAR Y RECALCULAR</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const GESTORES=[
+  {name:'Agustina Castillo',cls:'agustina',dot:'c-agus'},
+  {name:'Daniela Orjes',cls:'daniela',dot:'c-dani'},
+  {name:'Germán Portela',cls:'german',dot:'c-german'},
+  {name:'Nahuel Olmos',cls:'nahuel',dot:'c-nahuel'},
+  {name:'Fabricio Ojeda',cls:'fabricio',dot:'c-fabricio'},
+  {name:'Virginia Albamonte',cls:'virginia',dot:'c-virginia'}
+];
+
+const DEFAULT={
+  config:{worked:11,lab:21,objPerm:285,objVis:1260},
+  gestores:GESTORES.map(()=>({visitas:0,pozo:0,inc:0,reg:0,uf:0})),
+  history:[
+    {mes:'ABR',permisos:120,visitas:400},
+    {mes:'MAY',permisos:165,visitas:650},
+    {mes:'JUN',permisos:210,visitas:780},
+    {mes:'JUL',permisos:250,visitas:900},
+    {mes:'AGO',permisos:280,visitas:1050},
+    {mes:'SEP',permisos:320,visitas:1200}
+  ],
+  updated:''
+};
+let DATA=loadData();
+
+function clone(o){return JSON.parse(JSON.stringify(o))}
+function loadData(){try{const s=localStorage.getItem('dash_simple_9');return s?JSON.parse(s):clone(DEFAULT)}catch(e){return clone(DEFAULT)}}
+function persist(){localStorage.setItem('dash_simple_9',JSON.stringify(DATA))}
+function n(v){v=Number(v);return isFinite(v)?v:0}
+function fmt(v,d=0){return n(v).toLocaleString('es-AR',{minimumFractionDigits:d,maximumFractionDigits:d})}
+function pct(v){return fmt(v,1)+'%'}
+function permisos(r){return n(r.pozo)+n(r.inc)+n(r.reg)}
+function dot(g){return `<span class="manager-dot ${g.dot}"></span>`}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+
+const navButtons=document.querySelectorAll('#nav button');
+const sheets=document.querySelectorAll('.sheet');
+navButtons.forEach(btn=>btn.addEventListener('click',()=>{
+  const id=btn.dataset.sheet;
+  navButtons.forEach(b=>b.classList.remove('active'));
+  sheets.forEach(s=>s.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('sheet-'+id).classList.add('active');
+}));
+
+function openSimpleManual(){
+  DATA.config=DATA.config||clone(DEFAULT.config);
+  DATA.gestores=Array.isArray(DATA.gestores)?DATA.gestores:clone(DEFAULT.gestores);
+  DATA.history=Array.isArray(DATA.history)?DATA.history:clone(DEFAULT.history);
+
+  document.getElementById('smWorked').value=DATA.config.worked;
+  document.getElementById('smLab').value=DATA.config.lab;
+  document.getElementById('smObjPerm').value=DATA.config.objPerm;
+  document.getElementById('smObjVis').value=DATA.config.objVis;
+
+  const hb=document.getElementById('historyBody');
+  hb.innerHTML=DATA.history.map((r,i)=>`<tr>
+    <td><input data-hi="${i}" data-hk="mes" value="${esc(r.mes)}"></td>
+    <td><input data-hi="${i}" data-hk="permisos" type="number" min="0" value="${n(r.permisos)}"></td>
+    <td><input data-hi="${i}" data-hk="visitas" type="number" min="0" value="${n(r.visitas)}"></td>
+  </tr>`).join('');
+
+  document.getElementById('simpleBody').innerHTML=GESTORES.map((g,i)=>{
+    const r=DATA.gestores[i]||{visitas:0,pozo:0,inc:0,reg:0,uf:0};
+    return `<tr>
+      <td><input class="name" readonly value="${esc(g.name)}"></td>
+      <td><input data-i="${i}" data-k="visitas" type="number" min="0" value="${n(r.visitas)}" oninput="updateSimpleTotal(${i})"></td>
+      <td><input data-i="${i}" data-k="pozo" type="number" min="0" value="${n(r.pozo)}" oninput="updateSimpleTotal(${i})"></td>
+      <td><input data-i="${i}" data-k="inc" type="number" min="0" value="${n(r.inc)}" oninput="updateSimpleTotal(${i})"></td>
+      <td><input data-i="${i}" data-k="reg" type="number" min="0" value="${n(r.reg)}" oninput="updateSimpleTotal(${i})"></td>
+      <td><input data-i="${i}" data-k="uf" type="number" min="0" value="${n(r.uf)}"></td>
+      <td class="simple-total" id="simpleTotal${i}">${fmt(permisos(r))}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('simpleModal').classList.add('open');
+}
+function closeSimpleManual(){document.getElementById('simpleModal').classList.remove('open')}
+function updateSimpleTotal(i){
+  const vals={};
+  document.querySelectorAll(`#simpleBody input[data-i="${i}"]`).forEach(x=>vals[x.dataset.k]=n(x.value));
+  const e=document.getElementById('simpleTotal'+i);if(e)e.textContent=fmt(n(vals.pozo)+n(vals.inc)+n(vals.reg));
+}
+function saveSimpleManual(){
+  DATA.config={
+    worked:Math.max(1,n(document.getElementById('smWorked').value)),
+    lab:Math.max(1,n(document.getElementById('smLab').value)),
+    objPerm:n(document.getElementById('smObjPerm').value),
+    objVis:n(document.getElementById('smObjVis').value)
+  };
+  DATA.gestores=GESTORES.map((g,i)=>{
+    const r={visitas:0,pozo:0,inc:0,reg:0,uf:0};
+    document.querySelectorAll(`#simpleBody input[data-i="${i}"]`).forEach(x=>r[x.dataset.k]=n(x.value));
+    return r;
+  });
+
+  DATA.history=(DATA.history||DEFAULT.history).map((r,i)=>{
+    const row={mes:r.mes,permisos:r.permisos,visitas:r.visitas};
+    document.querySelectorAll(`#historyBody input[data-hi="${i}"]`).forEach(x=>{
+      const k=x.dataset.hk;
+      row[k]=k==='mes'?String(x.value||'').toUpperCase():n(x.value);
+    });
+    return row;
+  });
+  {
+    const now=new Date();
+    DATA.updated='DÍA '+now.toLocaleDateString('es-AR')+' · HORA '+now.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  }
+  persist();renderAll();closeSimpleManual();
+}
+function clearSimpleManual(){
+  if(!confirm('¿Limpiar la carga manual?'))return;
+  DATA=clone(DEFAULT);localStorage.removeItem('dash_simple_9');renderAll();closeSimpleManual();
+}
+
+function renderTop(){
+  const upd=document.getElementById('updatedText');
+  if(upd){
+    if(DATA.updated){
+      let u=String(DATA.updated);
+      if(!/^DÍA /i.test(u)){
+        const parts=u.split(' ');
+        if(parts.length>=2)u='DÍA '+parts[0]+' · HORA '+parts.slice(1).join(' ');
+      }
+      upd.textContent=u;
+    }else{
+      const now=new Date();
+      upd.textContent='DÍA '+now.toLocaleDateString('es-AR')+' · HORA '+now.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    }
+  }
+  const kpis=document.querySelectorAll('.topbar .kpi .value');
+  if(kpis[0])kpis[0].textContent=fmt(DATA.config.lab);
+  if(kpis[1])kpis[1].textContent=fmt(DATA.config.worked);
+  if(kpis[2])kpis[2].textContent=fmt(DATA.config.objPerm);
+  if(kpis[3])kpis[3].textContent=fmt(DATA.config.objVis);
+}
+
+function render1y2(){
+  const totalP=DATA.gestores.reduce((s,r)=>s+permisos(r),0);
+  const totalV=DATA.gestores.reduce((s,r)=>s+n(r.visitas),0);
+  const d=Math.max(1,DATA.config.worked);
+  const lab=Math.max(d,DATA.config.lab);
+  const projP=Math.round(totalP/d*lab);
+  const projV=Math.round(totalV/d*lab);
+  const hist=DATA.history||DEFAULT.history;
+
+  const chart1=document.querySelector('#sheet-1 .chart');
+  if(chart1){
+    [...chart1.querySelectorAll('.bar-wrap')].forEach(x=>x.remove());
+    const maxP=Math.max(1,DATA.config.objPerm,totalP,projP,...hist.map(r=>n(r.permisos)));
+    hist.forEach(r=>{
+      const w=document.createElement('div');
+      w.className='bar-wrap';
+      w.innerHTML=`<div class="bar-value">${fmt(r.permisos)}</div><div class="bar" style="height:${Math.min(100,n(r.permisos)/maxP*100)}%"></div><div class="bar-label">${esc(r.mes)}</div>`;
+      chart1.appendChild(w);
+    });
+    const actual=document.createElement('div');
+    actual.className='bar-wrap';
+    actual.innerHTML=`<div class="bar-value">${fmt(totalP)}</div><div class="bar" style="height:${Math.min(100,totalP/maxP*100)}%"></div><div class="bar-label">OCT<br>ACTUAL</div>`;
+    const proy=document.createElement('div');
+    proy.className='bar-wrap';
+    proy.innerHTML=`<div class="bar-value">${fmt(projP)}</div><div class="bar green" style="height:${Math.min(100,projP/maxP*100)}%"></div><div class="bar-label">OCT<br>PROYECCIÓN</div>`;
+    chart1.appendChild(actual);chart1.appendChild(proy);
+    const line=chart1.querySelector('.goal-line span');
+    if(line)line.textContent='OBJETIVO '+fmt(DATA.config.objPerm);
+  }
+
+  const chart2=document.querySelector('#sheet-2 .chart');
+  if(chart2){
+    [...chart2.querySelectorAll('.bar-wrap')].forEach(x=>x.remove());
+    const maxV=Math.max(1,DATA.config.objVis,totalV,projV,...hist.map(r=>n(r.visitas)));
+    hist.forEach(r=>{
+      const w=document.createElement('div');
+      w.className='bar-wrap';
+      w.innerHTML=`<div class="bar-value">${fmt(r.visitas)}</div><div class="bar purple" style="height:${Math.min(100,n(r.visitas)/maxV*100)}%"></div><div class="bar-label">${esc(r.mes)}</div>`;
+      chart2.appendChild(w);
+    });
+    const actual=document.createElement('div');
+    actual.className='bar-wrap';
+    actual.innerHTML=`<div class="bar-value">${fmt(totalV)}</div><div class="bar purple" style="height:${Math.min(100,totalV/maxV*100)}%"></div><div class="bar-label">OCT<br>ACTUAL</div>`;
+    const proy=document.createElement('div');
+    proy.className='bar-wrap';
+    proy.innerHTML=`<div class="bar-value">${fmt(projV)}</div><div class="bar turq" style="height:${Math.min(100,projV/maxV*100)}%"></div><div class="bar-label">OCT<br>PROYECCIÓN</div>`;
+    chart2.appendChild(actual);chart2.appendChild(proy);
+    const line=chart2.querySelector('.goal-line span');
+    if(line)line.textContent='OBJETIVO '+fmt(DATA.config.objVis);
+  }
+}
+
+function render3(){
+  const total=DATA.gestores.reduce((s,r)=>s+permisos(r),0);
+  const order=GESTORES.map((g,i)=>({g,r:DATA.gestores[i],p:permisos(DATA.gestores[i])})).sort((a,b)=>b.p-a.p);
+  const max=Math.max(1,...order.map(x=>x.p));
+  const tbs=document.querySelectorAll('#sheet-3 tbody');
+  if(tbs[0])tbs[0].innerHTML=order.map((x,i)=>`<tr><td class="name">${dot(x.g)}${x.g.name}</td><td>${fmt(x.p)}</td><td>${total?pct(x.p/total*100):'0,0%'}</td><td><div class="rankbar"><span class="manager-fill ${x.g.cls}" style="width:${x.p/max*100}%"></span></div></td></tr>`).join('');
+  if(tbs[1]){
+    const d=Math.max(1,DATA.config.worked),maxppd=Math.max(1,...order.map(x=>x.p/d));
+    tbs[1].innerHTML=order.map(x=>{const v=x.p/d;return `<tr><td>${x.g.name}</td><td>${fmt(v,2)}</td><td><div class="rankbar"><span class="manager-fill ${x.g.cls}" style="width:${v/maxppd*100}%"></span></div></td></tr>`}).join('');
+  }
+}
+
+function render4(){
+  const total=DATA.gestores.reduce((s,r)=>s+n(r.visitas),0);
+  const order=GESTORES.map((g,i)=>({g,r:DATA.gestores[i]})).sort((a,b)=>n(b.r.visitas)-n(a.r.visitas));
+  const max=Math.max(1,...order.map(x=>n(x.r.visitas)));
+  const tb=document.querySelector('#sheet-4 tbody');
+  tb.innerHTML=order.map((x,i)=>`<tr><td class="name">${dot(x.g)}${x.g.name}</td><td>${fmt(x.r.visitas)}</td><td>${total?pct(n(x.r.visitas)/total*100):'0,0%'}</td><td><div class="rankbar"><span class="manager-fill ${x.g.cls}" style="width:${n(x.r.visitas)/max*100}%"></span></div></td></tr>`).join('');
+}
+
+function render5(){
+  const cols=document.querySelectorAll('#sheet-5 .origin-col');
+  [['inc',''],['pozo','v'],['reg','']].forEach(([field,cl],ci)=>{
+    const col=cols[ci], max=Math.max(1,...DATA.gestores.map(r=>n(r[field])));
+    const h=col.querySelector('h3').outerHTML;
+    col.innerHTML=h+GESTORES.map((g,i)=>{const v=n(DATA.gestores[i][field]);return `<div class="origin-row"><span>${g.name}</span><div class="mini-track"><div class="mini-fill ${cl}" style="width:${v/max*100}%"></div></div><b>${fmt(v)}</b></div>`}).join('');
+  });
+  const strong=document.querySelectorAll('#sheet-5 .totals strong');
+  const a=DATA.gestores.reduce((s,r)=>s+n(r.inc),0),b=DATA.gestores.reduce((s,r)=>s+n(r.pozo),0),c=DATA.gestores.reduce((s,r)=>s+n(r.reg),0);
+  [a,b,c,a+b+c].forEach((v,i)=>{if(strong[i])strong[i].textContent=fmt(v)});
+}
+
+function render6(){
+  const chart=document.getElementById('sheet6Chart');
+  if(!chart)return;
+  const max=Math.max(1,...DATA.gestores.map(r=>n(r.uf)));
+  const totalUF=DATA.gestores.reduce((s,r)=>s+n(r.uf),0);
+  const totalElement=document.getElementById('sheet6TotalUF');
+  if(totalElement)totalElement.textContent=fmt(totalUF);
+  chart.innerHTML=GESTORES.map((g,i)=>{
+    const v=n(DATA.gestores[i].uf);
+    return `<div class="bar-wrap"><div class="bar-value">${fmt(v)}</div><div class="bar manager-bar ${g.cls}" style="height:${v/max*100}%"></div><div class="bar-label">${g.name.replace(' ','<br>')}</div></div>`;
+  }).join('');
+}
+
+function render7(){
+  const d=Math.max(1,DATA.config.worked),lab=Math.max(d,DATA.config.lab),rest=Math.max(0,lab-d);
+  const stats=document.querySelectorAll('#sheet-7 .stats .svalue');
+  const avg=DATA.gestores.reduce((s,r)=>s+permisos(r)/d,0)/GESTORES.length;
+  [GESTORES.length,d,lab,rest,fmt(avg,2)].forEach((v,i)=>{if(stats[i])stats[i].textContent=v});
+  const tb=document.querySelector('#sheet-7 tbody');
+  tb.innerHTML=GESTORES.map((g,i)=>{
+    const p=permisos(DATA.gestores[i]),ppd=p/d,proj=ppd*lab,obj2=lab*2,obj3=lab*3,f2=Math.max(0,obj2-p),f3=Math.max(0,obj3-p);
+    const req2=rest?f2/rest:0,req3=rest?f3/rest:0,pos2=req2?((ppd/req2)-1)*100:100,pos3=req3?((ppd/req3)-1)*100:100;
+    const cls=v=>v>=0?'pos':v>=-20?'warn':'neg';
+    return `<tr><td class="name">${dot(g)}${g.name}</td><td>${fmt(p)}</td><td>${fmt(ppd,2)}</td><td>${fmt(proj,2)}</td><td>${fmt(obj2)}</td><td class="${f2?'neg':'pos'}">${fmt(f2)}</td><td class="${cls(pos2)}">${pct(pos2)}</td><td>${fmt(obj3)}</td><td class="${f3?'neg':'pos'}">${fmt(f3)}</td><td class="${cls(pos3)}">${pct(pos3)}</td></tr>`;
+  }).join('');
+}
+
+function render8(){
+  const d=Math.max(1,DATA.config.worked),lab=Math.max(d,DATA.config.lab),rest=Math.max(0,lab-d),objG=DATA.config.objVis/GESTORES.length;
+  const stats=document.querySelectorAll('#sheet-8 .stats .svalue');
+  [GESTORES.length,d,lab,rest,fmt(DATA.config.objVis)].forEach((v,i)=>{if(stats[i])stats[i].textContent=v});
+  const tb=document.querySelector('#sheet-8 tbody');
+  tb.innerHTML=GESTORES.map((g,i)=>{
+    const v=n(DATA.gestores[i].visitas),vpd=v/d,proj=vpd*lab,f=Math.max(0,objG-v),alc=objG?v/objG*100:0,req=rest?f/rest:0,cls=alc>=100?'pos':alc>=85?'warn':'neg';
+    return `<tr><td class="name">${dot(g)}${g.name}</td><td>${fmt(v)}</td><td>${fmt(vpd,2)}</td><td>${fmt(proj)}</td><td>${fmt(objG)}</td><td>${fmt(f)}</td><td class="${cls}">${pct(alc)}</td><td class="${cls}">${fmt(req,2)}</td></tr>`;
+  }).join('');
+}
+
+function render9(){
+  const totalV=DATA.gestores.reduce((s,r)=>s+n(r.visitas),0),totalP=DATA.gestores.reduce((s,r)=>s+permisos(r),0),conv=totalV?totalP/totalV*100:0,d=Math.max(1,DATA.config.worked);
+  const stats=document.querySelectorAll('#sheet-9 .stats .svalue');
+  [GESTORES.length,totalV,totalP,pct(conv),DATA.updated||'Sin guardar'].forEach((v,i)=>{if(stats[i])stats[i].innerHTML=i===4?String(v).replace(', ','<br>'):String(v)});
+  const tb=document.querySelector('#sheet-9 tbody');
+  tb.innerHTML=GESTORES.map((g,i)=>{
+    const r=DATA.gestores[i],p=permisos(r),c=n(r.visitas)?p/n(r.visitas)*100:0;
+    return `<tr><td class="name">${dot(g)}${g.name}</td><td>${fmt(r.visitas)}</td><td>${fmt(p)}</td><td class="cyan">${fmt(r.pozo)}</td><td class="neg">${fmt(r.inc)}</td><td class="warn">${fmt(r.reg)}</td><td>${pct(c)}</td><td>${fmt(p/d,2)}</td><td>${fmt(n(r.visitas)/d,2)}</td><td>${DATA.updated||'-'}</td></tr>`;
+  }).join('');
+}
+
+function renderAll(){renderTop();render1y2();render3();render4();render5();render6();render7();render8();render9()}
+
+function demoAction(name){alert(name+': esta versión usa únicamente la carga manual simple.')}
+function tryRefresh(){alert('Esta versión está configurada para carga manual.')}
+function toggleTV(){if(!document.fullscreenElement){document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}else{document.exitFullscreen&&document.exitFullscreen()}}
+function downloadCurrentHtml(){
+  const clone=document.documentElement.cloneNode(true);
+  const body=clone.querySelector('body');
+  if(body)body.classList.add('index-view');
+
+  const actionbar=clone.querySelector('.actionbar');
+  if(actionbar)actionbar.remove();
+
+  const modal=clone.querySelector('#simpleModal');
+  if(modal)modal.remove();
+
+  const exported=`<!DOCTYPE html>
+${clone.outerHTML}`;
+  const blob=new Blob([exported],{type:'text/html'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='INDEX_Dashboard_Edificios_9_Hojas.html';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),500);
+}
+
+renderAll();
+</script>
+
+</body></html>
